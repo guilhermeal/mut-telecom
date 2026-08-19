@@ -102,6 +102,18 @@ textarea:focus-visible, [tabindex]:focus-visible {
 .mut-input:focus { border-color: var(--ring); outline: none; }
 .mut-social-link:hover { color: var(--primary); border-color: var(--primary); }
 
+/* botão flutuante de crédito do desenvolvedor — some por padrão, só aparece
+   perto do final da página (ver initDevCreditFloat em main.js) */
+#mut-dev-credit {
+  opacity: 0; visibility: hidden; transform: translateY(10px);
+  transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+}
+#mut-dev-credit.is-visible {
+  opacity: 1; visibility: visible; transform: translateY(0);
+  transition: opacity .25s ease, transform .25s ease;
+}
+#mut-dev-credit:hover, #mut-dev-credit:focus-visible { transform: translateY(-2px); }
+
 /* toggle de tema: dois ícones, mostra só o correspondente ao estado atual */
 body:not(.dark) .theme-icon-sun { display: none; }
 body.dark .theme-icon-moon { display: none; }

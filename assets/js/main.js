@@ -12,6 +12,7 @@
     initHeaderShadow();
     initDrawer();
     initCookieBanner();
+    initDevCreditFloat();
     initFaqAccordions();
     initPlanToggle();
     initCoverageForm();
@@ -86,6 +87,25 @@
     drawer.addEventListener('click', function (e) {
       if (e.target === drawer) close();
     });
+  }
+
+  /* ---------------- Crédito do desenvolvedor (flutuante, some até o fim da página) ---------------- */
+  function initDevCreditFloat() {
+    var badge = document.getElementById('mut-dev-credit');
+    if (!badge) return;
+
+    var THRESHOLD = 250; // px de distância do rodapé a partir da qual o botão aparece
+
+    var update = function () {
+      var doc = document.documentElement;
+      var scrollBottom = window.scrollY + window.innerHeight;
+      var nearBottom = scrollBottom >= (doc.scrollHeight - THRESHOLD);
+      badge.classList.toggle('is-visible', nearBottom);
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   }
 
   /* ---------------- Banner de cookies ---------------- */

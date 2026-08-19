@@ -54,6 +54,12 @@
   <!-- ============ WHATSAPP FLOAT ============ -->
   <a href="<?= e(mut_whatsapp_float_link()) ?>" target="_blank" rel="noopener" aria-label="Falar no WhatsApp (abre em nova aba)" style="position:fixed; bottom:24px; right:24px; z-index:55; width:58px; height:58px; border-radius:50%; background:#25d366; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(37,211,102,.45); animation:mutPulse 2.4s infinite; cursor:pointer;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="30" height="30" fill="#fff"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-6c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1 1.9-.6 3.1.5 1.5 1.5 2.8 2.7 3.8 1.9 1.6 3.5 2 4.5 1.8.7-.1 1.5-.7 1.7-1.3.2-.5.2-1 .1-1.1l-.6-.3z"/></svg></a>
 
+  <!-- ============ CRÉDITO DO DESENVOLVEDOR (flutuante, canto inferior esquerdo) ============ -->
+  <!-- Só aparece quando o usuário rola até perto do final da página (ver initDevCreditFloat em main.js). -->
+  <a href="https://www.guilhermeal.com.br" target="_blank" rel="noopener" id="mut-dev-credit" title="Este site foi desenvolvido por Guilherme AL" aria-label="Este site foi desenvolvido por Guilherme AL (abre em nova aba)" style="position:fixed; bottom:24px; left:24px; z-index:55; width:52px; height:52px; border-radius:50%; background: #afc5f8; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(16,42,82,.28); cursor:pointer;">
+    <img src="assets/logo-guilherme-al.png" alt="" width="22" height="30" style="display:block; height:40px; width:auto;">
+  </a>
+
   <!-- ============ COOKIE BANNER ============ -->
   <div id="mut-cookie-banner" class="hidden" role="region" aria-label="Aviso de cookies" style="position:fixed; bottom:0; left:0; right:0; z-index:54; padding:16px;">
     <div style="max-width:1000px; margin:0 auto; background:var(--background); border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); padding:18px 22px; display:flex; flex-wrap:wrap; align-items:center; gap:16px; justify-content:space-between;">

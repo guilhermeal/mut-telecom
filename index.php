@@ -30,7 +30,7 @@ require __DIR__ . '/includes/header.php';
             <h1 class="h1 mut-heading-38-3">Internet de fibra óptica em Murici, Messias, Rio Largo e Branquinha</h1>
             <p class="mut-misc-51">Fibra óptica com sinal firme e atendimento de gente da região, em Murici, Messias, Rio Largo e Branquinha.</p>
             <div class="mut-row-23">
-              <a href="planos.php" class="mut-lift mut-btn-13">Ver planos e preços</a>
+              <a href="planos" class="mut-lift mut-btn-13">Ver planos e preços</a>
               <a href="<?= e(mut_whatsapp_float_link()) ?>" target="_blank" rel="noopener" class="mut-outline-hover mut-misc-72"><?= mut_icon_whatsapp() ?>Falar no WhatsApp</a>
             </div>
           </div>
@@ -124,7 +124,7 @@ require __DIR__ . '/includes/header.php';
               <div class="mut-row-6"><span class="mut-misc-93"></span>Área com fibra MUT</div>
               <div class="mut-row-6"><span class="mut-misc-92"></span>Ponto de rede ativo</div>
             </div>
-            <a class="mut-btn-3" href="cobertura.php">Verificar cobertura completa</a>
+            <a class="mut-btn-3" href="cobertura">Verificar cobertura completa</a>
           </div>
           <div class="mut-card-16">
             <img class="mut-misc-23" src="assets/mapa-cobertura.svg" alt="Mapa de cobertura da MUT em Alagoas" loading="lazy">
@@ -182,7 +182,7 @@ require __DIR__ . '/includes/header.php';
               <div class="mut-iconbox-46-2"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
               <div class="mut-heading-18-3"><?= e($c) ?></div>
               <div class="mut-muted-13-3">[X] bairros atendidos</div>
-              <a class="mut-misc-70" href="cobertura.php">Ver cobertura</a>
+              <a class="mut-misc-70" href="cobertura">Ver cobertura</a>
             </div>
 <?php endforeach; ?>
           </div>
@@ -238,7 +238,7 @@ require __DIR__ . '/includes/header.php';
               <h2 class="mut-heading-34-2">Soluções de internet para o seu negócio</h2>
               <p class="mut-misc-48">Link dedicado, IP fixo, SLA e suporte prioritário para empresas que não podem ficar offline.</p>
             </div>
-            <div class="mut-pos-16"><a href="empresas.php" class="mut-lift mut-btn-16">Conhecer planos empresariais <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+            <div class="mut-pos-16"><a href="empresas" class="mut-lift mut-btn-16">Conhecer planos empresariais <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           </div>
         </div>
       </section>
@@ -270,7 +270,7 @@ require __DIR__ . '/includes/header.php';
           <h2 class="mut-heading-42">Pronto para se conectar ao futuro?</h2>
           <p class="mut-muted-17-2">Fibra de verdade, suporte da sua região. Assine em minutos.</p>
           <div class="mut-row-24">
-            <a href="planos.php" class="mut-lift mut-btn-19">Assine já</a>
+            <a href="planos" class="mut-lift mut-btn-19">Assine já</a>
             <a href="<?= e(mut_whatsapp_float_link()) ?>" target="_blank" rel="noopener" class="mut-outline-hover mut-btn-18"><?= mut_icon_whatsapp(19) ?>Falar no WhatsApp</a>
           </div>
         </div>

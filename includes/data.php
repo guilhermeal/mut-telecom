@@ -25,7 +25,7 @@ const MUT_SITE_URL = 'https://www.muttelecom.com.br';
 const MUT_PHONE_DISPLAY = '0800 042 0055';
 const MUT_PHONE_TEL = '08000420055';
 const MUT_EMAIL = 'contato@muttelecom.com.br';
-const MUT_CNPJ = '00.000.000/0001-00';
+const MUT_CNPJ = '08.375.171/0001-07';
 
 /**
  * Monta um link de WhatsApp com mensagem pré-preenchida.
@@ -242,11 +242,11 @@ function mut_render_plan_card(array $plan): void
 function mut_main_nav_items(): array
 {
     return [
-        ['href' => 'planos.php', 'label' => 'Planos'],
-        ['href' => 'cobertura.php', 'label' => 'Cobertura'],
-        ['href' => 'empresas.php', 'label' => 'Para Empresas'],
-        ['href' => 'sobre.php', 'label' => 'Sobre'],
-        ['href' => 'ajuda.php', 'label' => 'Ajuda'],
+        ['href' => 'planos', 'label' => 'Planos'],
+        ['href' => 'cobertura', 'label' => 'Cobertura'],
+        ['href' => 'empresas', 'label' => 'Para Empresas'],
+        ['href' => 'sobre', 'label' => 'Sobre'],
+        ['href' => 'ajuda', 'label' => 'Ajuda'],
     ];
 }
 

@@ -5,19 +5,18 @@
   <footer class="mut-misc-31">
     <div class="footer-grid mut-misc-62">
       <div>
-        <div class="mut-heading-26-3">MUT<svg class="mut-pos-8" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="13" height="13" fill="var(--accent)"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
-        <div class="mut-muted-11">CONECTADOS AO FUTURO</div>
+        <img src="assets/MUT_full_logo.png" alt="MUT Telecom" class="mut-logo mut-logo--nav">
         <p class="mut-muted-14-4">Operadora regional de fibra óptica, feita pra conectar Alagoas com velocidade e atendimento de verdade.</p>
         <div class="mut-card-19"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>Empresa registrada na Anatel</div>
       </div>
       <nav aria-label="Navegação do rodapé">
         <div class="mut-heading-15-3">Navegação</div>
         <div class="mut-grid-9">
-          <a href="planos.php" class="mut-muted-link mut-misc-3">Planos</a>
-          <a href="cobertura.php" class="mut-muted-link mut-misc-3">Cobertura</a>
-          <a href="empresas.php" class="mut-muted-link mut-misc-3">Para Empresas</a>
-          <a href="sobre.php" class="mut-muted-link mut-misc-3">Sobre</a>
-          <a href="ajuda.php" class="mut-muted-link mut-misc-3">Central de ajuda</a>
+          <a href="planos" class="mut-muted-link mut-misc-3">Planos</a>
+          <a href="cobertura" class="mut-muted-link mut-misc-3">Cobertura</a>
+          <a href="empresas" class="mut-muted-link mut-misc-3">Para Empresas</a>
+          <a href="sobre" class="mut-muted-link mut-misc-3">Sobre</a>
+          <a href="ajuda" class="mut-muted-link mut-misc-3">Central de ajuda</a>
         </div>
       </nav>
       <div>
@@ -44,9 +43,9 @@
         <a href="#" aria-label="Facebook da MUT Telecom (abre em nova aba)" target="_blank" rel="noopener" class="mut-social-link mut-card-10"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
       </div>
       <div class="mut-row-22">
-        <a href="ajuda.php" class="mut-muted-link mut-misc-8">Contrato de prestação de serviço</a>
-        <a href="ajuda.php" class="mut-muted-link mut-misc-8">Política de Privacidade / LGPD</a>
-        <a href="ajuda.php" class="mut-muted-link mut-misc-8">Termos de uso</a>
+        <a href="ajuda" class="mut-muted-link mut-misc-8">Contrato de prestação de serviço</a>
+        <a href="ajuda" class="mut-muted-link mut-misc-8">Política de Privacidade / LGPD</a>
+        <a href="ajuda" class="mut-muted-link mut-misc-8">Termos de uso</a>
       </div>
     </div>
     <div class="mut-muted-125-2">CNPJ <?= e(MUT_CNPJ) ?> · © <?= date('Y') ?> MUT Telecom. Todos os direitos reservados.</div>
@@ -66,7 +65,7 @@
     <div class="mut-card-22">
       <p class="mut-muted-14-5">Usamos cookies para melhorar sua experiência e entender como você usa o site. Ao continuar, você concorda com nossa Política de Privacidade.</p>
       <div class="mut-row-7">
-        <a href="ajuda.php" class="mut-outline-hover-2 mut-btn-7">Saber mais</a>
+        <a href="ajuda" class="mut-outline-hover-2 mut-btn-7">Saber mais</a>
         <button class="mut-btn-9" type="button" id="mut-cookie-accept">Aceitar</button>
       </div>
     </div>

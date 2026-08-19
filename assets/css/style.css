@@ -139,6 +139,12 @@ body.dark .theme-icon-moon { display: none; }
 /* toggle Residencial / Empresarial dos planos */
 .mut-text-center { text-align: center; }
 
+/* logomarca oficial (assets/MUT_full_logo.png), reaproveitada em navbar/footer/drawer/login */
+.mut-logo { width: auto; }
+.mut-logo--nav { height: 40px; }
+.mut-logo--sm { height: 26px; }
+.mut-logo--lg { height: 64px; }
+
 /* bloco de preço do card de plano (com desconto pontualidade opcional) */
 .mut-plan-price-block { margin-top: 14px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
 .mut-plan-original-price { font-size: 13px; color: var(--muted); text-decoration: line-through; margin-bottom: 2px; }

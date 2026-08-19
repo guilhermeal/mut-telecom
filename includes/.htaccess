@@ -1,0 +1,2 @@
+# Nada aqui é servido diretamente por HTTP — só via require/include dos .php da raiz.
+Require all denied

@@ -1,0 +1,11 @@
+# Impede listar o conteúdo da pasta
+Options -Indexes
+
+# Por padrão, nada aqui é acessível diretamente...
+Require all denied
+
+# ...exceto os tipos de arquivo que o site realmente serve como recurso público
+# (CSS, JS, imagens, favicons, manifest/browserconfig).
+<FilesMatch "\.(css|js|json|xml|ico|png|jpe?g|webp|svg|gif|woff2?|ttf)$">
+    Require all granted
+</FilesMatch>

@@ -11,11 +11,14 @@ require_once __DIR__ . '/data.php';
 $pageTitle = $pageTitle ?? 'MUT Telecom — Fibra óptica em Alagoas';
 $pageDescription = $pageDescription ?? 'Internet de fibra óptica em Murici, Messias, Rio Largo e Branquinha, com atendimento local e suporte de verdade.';
 
-/** Página atual, usada para marcar o link ativo do menu com aria-current. */
-$mutCurrentPage = basename($_SERVER['SCRIPT_NAME'] ?? '');
+/**
+ * Página atual sem extensão (ex.: 'planos'), usada para marcar o link ativo do
+ * menu com aria-current — as URLs públicas não têm mais ".php" (ver .htaccess).
+ */
+$mutCurrentPage = preg_replace('/\.php$/', '', basename($_SERVER['SCRIPT_NAME'] ?? ''));
 
 /** URL canônica e imagem de preview social (absolutas, para OG/Twitter/JSON-LD). */
-$mutCanonicalUrl = MUT_SITE_URL . ($mutCurrentPage === 'index.php' || $mutCurrentPage === '' ? '/' : '/' . $mutCurrentPage);
+$mutCanonicalUrl = MUT_SITE_URL . ($mutCurrentPage === 'index' || $mutCurrentPage === '' ? '/' : '/' . $mutCurrentPage);
 $mutOgImageUrl = MUT_SITE_URL . '/assets/og-image.jpg';
 
 /**
@@ -37,6 +40,27 @@ function mut_nav_current(string $file): string
 <meta name="geo.region" content="BR-AL">
 <meta name="geo.placename" content="Alagoas">
 <link rel="canonical" href="<?= e($mutCanonicalUrl) ?>">
+
+<!-- Favicons (assets/favicon/) -->
+<link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<link rel="manifest" href="assets/favicon/manifest.json">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 
 <!-- Open Graph (Facebook, WhatsApp, LinkedIn, etc.) -->
 <meta property="og:site_name" content="MUT Telecom">
@@ -90,9 +114,8 @@ function mut_nav_current(string $file): string
   <header class="mut-pos-22" id="mut-header">
     <nav class="mut-misc-64" aria-label="Navegação principal">
       <!-- logo -->
-      <a class="mut-row-15" href="index.php" aria-label="MUT Telecom — página inicial">
-        <div class="mut-heading-27" aria-hidden="true">MUT<svg class="mut-pos-9" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="14" height="14" fill="var(--accent)"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
-        <div class="hide-xs mut-muted-85" aria-hidden="true">CONECTADOS<br>AO FUTURO</div>
+      <a class="mut-row-15" href="/" aria-label="MUT Telecom — página inicial">
+        <img src="assets/MUT_full_logo.png" alt="" class="mut-logo mut-logo--nav">
       </a>
       <!-- center links -->
       <div class="nav-desktop mut-row-18">
@@ -102,10 +125,10 @@ function mut_nav_current(string $file): string
       </div>
       <!-- right actions -->
       <div class="nav-desktop mut-row-10">
-        <a href="segunda-via.php" class="mut-btn-outline mut-btn-21"<?= mut_nav_current('segunda-via.php') ?>>2ª via de boleto</a>
-        <a href="area-do-cliente.php" class="mut-client-link mut-misc-43"<?= mut_nav_current('area-do-cliente.php') ?>>Área do Cliente</a>
+        <a href="segunda-via" class="mut-btn-outline mut-btn-21"<?= mut_nav_current('segunda-via') ?>>2ª via de boleto</a>
+        <a href="area-do-cliente" class="mut-client-link mut-misc-43"<?= mut_nav_current('area-do-cliente') ?>>Área do Cliente</a>
         <?php mut_render_theme_toggle_button('mut-theme-toggle', withTransition: true); ?>
-        <a href="planos.php" class="mut-cta-accent mut-btn-8">Assine já</a>
+        <a href="planos" class="mut-cta-accent mut-btn-8">Assine já</a>
       </div>
       <!-- mobile burger -->
       <div class="nav-burger mut-misc-39">
@@ -119,7 +142,7 @@ function mut_nav_current(string $file): string
   <div id="mut-drawer" class="hidden mut-pos-13" role="dialog" aria-modal="true" aria-label="Menu de navegação">
     <div class="mut-pos-11">
       <div class="mut-row-27">
-        <div class="mut-heading-22-2" aria-hidden="true">MUT</div>
+        <img src="assets/MUT_full_logo.png" alt="MUT Telecom" class="mut-logo mut-logo--sm">
         <button class="mut-card-28" type="button" id="mut-drawer-close" aria-label="Fechar menu"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
       </div>
       <nav class="mut-row-20" aria-label="Menu mobile">
@@ -128,9 +151,9 @@ function mut_nav_current(string $file): string
 <?php endforeach; ?>
       </nav>
       <div class="mut-misc-54" role="separator"></div>
-      <a href="segunda-via.php" class="mut-btn-10"<?= mut_nav_current('segunda-via.php') ?>>2ª via de boleto</a>
-      <a href="area-do-cliente.php" class="mut-misc-71"<?= mut_nav_current('area-do-cliente.php') ?>>Área do Cliente</a>
-      <a class="mut-btn-4" href="planos.php">Assine já</a>
+      <a href="segunda-via" class="mut-btn-10"<?= mut_nav_current('segunda-via') ?>>2ª via de boleto</a>
+      <a href="area-do-cliente" class="mut-misc-71"<?= mut_nav_current('area-do-cliente') ?>>Área do Cliente</a>
+      <a class="mut-btn-4" href="planos">Assine já</a>
     </div>
   </div>
 

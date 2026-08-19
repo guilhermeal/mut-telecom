@@ -29,9 +29,9 @@ require __DIR__ . '/includes/header.php';
           </div>
           <!-- atalhos -->
           <div class="grid-3 mut-grid-5">
-            <a href="segunda-via.php" class="mut-outline-hover-2 mut-row-5"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg><span class="mut-misc-11">2ª via de boleto</span></a>
+            <a href="segunda-via" class="mut-outline-hover-2 mut-row-5"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg><span class="mut-misc-11">2ª via de boleto</span></a>
             <a href="<?= e(mut_whatsapp_float_link()) ?>" target="_blank" rel="noopener" class="mut-outline-hover-2 mut-row-5"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="#25d366"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2z"/></svg><span class="mut-misc-11">Falar no WhatsApp</span></a>
-            <a href="area-do-cliente.php" class="mut-outline-hover-2 mut-row-5"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="mut-misc-11">Área do Cliente</span></a>
+            <a href="area-do-cliente" class="mut-outline-hover-2 mut-row-5"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="mut-misc-11">Área do Cliente</span></a>
           </div>
           <div class="mut-container-820-2">
             <h2 class="mut-heading-28-4">Perguntas frequentes</h2>

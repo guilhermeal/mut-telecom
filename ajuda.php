@@ -12,7 +12,7 @@ require __DIR__ . '/includes/header.php';
 <div>
       <section class="mut-misc-77">
         <div class="mut-container-720">
-          <h1 class="mut-heading-44-2">Como podemos ajudar?</h1>
+          <h1 class="mut-heading-44-2">Central de ajuda da MUT Telecom em Alagoas</h1>
           <form class="mut-pos-18" role="search" onsubmit="return false;">
             <label for="mut-help-search" class="mut-visually-hidden">Buscar na Central de Ajuda</label>
             <svg class="mut-pos-3" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>

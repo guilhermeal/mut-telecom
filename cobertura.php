@@ -11,7 +11,7 @@ require __DIR__ . '/includes/header.php';
       <section class="mut-misc-6">
         <div class="mut-container-760">
           <div class="mut-eyebrow">Cobertura</div>
-          <h1 class="mut-heading-46">Veja se já chegamos até você</h1>
+          <h1 class="mut-heading-46">Cobertura de fibra óptica em Murici, Messias, Rio Largo e Branquinha</h1>
           <p class="mut-muted-17">Fibra óptica em Murici, Messias, Rio Largo e Branquinha — e expandindo.</p>
         </div>
       </section>
@@ -19,7 +19,7 @@ require __DIR__ . '/includes/header.php';
         <div class="mut-container-1240">
           <div class="mut-card-27">
             <div class="mut-misc-90">
-              <img class="mut-misc-23" src="assets/alagoas-full.svg" alt="Mapa do estado de Alagoas com a área de cobertura da MUT">
+              <img class="mut-misc-23" src="assets/alagoas-full.svg" alt="Mapa do estado de Alagoas com a área de cobertura da MUT" loading="lazy">
             </div>
             <div class="mut-muted-12-4">Mapa do estado de Alagoas — regiões atendidas em destaque</div>
           </div>

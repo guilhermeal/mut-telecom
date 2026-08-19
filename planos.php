@@ -15,7 +15,7 @@ require __DIR__ . '/includes/header.php';
       <section class="mut-misc-6">
         <div class="mut-container-760">
           <div class="mut-eyebrow">NOSSOS PLANOS</div>
-          <h1 class="mut-heading-46">Planos de fibra para todo jeito de usar</h1>
+          <h1 class="mut-heading-46">Planos de fibra óptica em Alagoas para todo jeito de usar</h1>
           <p class="mut-muted-17">Residencial ou empresarial — escolha a velocidade, assine pelo WhatsApp e conecte-se.</p>
         </div>
       </section>

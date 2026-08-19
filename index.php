@@ -27,7 +27,7 @@ require __DIR__ . '/includes/header.php';
               <span class="mut-heading-28">MEGA</span>
             </div>
             <div class="mut-eyebrow-3">★ Nosso plano mais assinado</div>
-            <h1 class="h1 mut-heading-38-3">A internet que a sua cidade esperava.</h1>
+            <h1 class="h1 mut-heading-38-3">Internet de fibra óptica em Murici, Messias, Rio Largo e Branquinha</h1>
             <p class="mut-misc-51">Fibra óptica com sinal firme e atendimento de gente da região, em Murici, Messias, Rio Largo e Branquinha.</p>
             <div class="mut-row-23">
               <a href="planos.php" class="mut-lift mut-btn-13">Ver planos e preços</a>
@@ -127,7 +127,7 @@ require __DIR__ . '/includes/header.php';
             <a class="mut-btn-3" href="cobertura.php">Verificar cobertura completa</a>
           </div>
           <div class="mut-card-16">
-            <img class="mut-misc-23" src="assets/mapa-cobertura.svg" alt="Mapa de cobertura da MUT em Alagoas">
+            <img class="mut-misc-23" src="assets/mapa-cobertura.svg" alt="Mapa de cobertura da MUT em Alagoas" loading="lazy">
           </div>
         </div>
       </section>

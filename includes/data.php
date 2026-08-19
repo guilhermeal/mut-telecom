@@ -10,6 +10,17 @@ declare(strict_types=1);
 const MUT_WHATSAPP_NUMBER = '5582999999999';
 
 /**
+ * Dados institucionais mockados, centralizados aqui para alimentar tanto o
+ * rodapé quanto as tags de SEO/JSON-LD/Open Graph em includes/header.php.
+ * TODO: substituir por dados reais da empresa quando disponíveis.
+ */
+const MUT_SITE_URL = 'https://www.muttelecom.com.br';
+const MUT_PHONE_DISPLAY = '(82) 3000-0000';
+const MUT_PHONE_E164 = '+55 82 3000-0000';
+const MUT_EMAIL = 'contato@muttelecom.com.br';
+const MUT_CNPJ = '00.000.000/0001-00';
+
+/**
  * Monta um link de WhatsApp com mensagem pré-preenchida.
  */
 function mut_whatsapp_link(string $mensagem): string
@@ -136,6 +147,36 @@ function mut_faturas_mock(): array
 function mut_icon_whatsapp(int $size = 18): string
 {
     return '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="' . $size . '" height="' . $size . '" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-6c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1 1.9-.6 3.1.5 1.5 1.5 2.8 2.7 3.8 1.9 1.6 3.5 2 4.5 1.8.7-.1 1.5-.7 1.7-1.3.2-.5.2-1 .1-1.1l-.6-.3z"/></svg>';
+}
+
+/**
+ * Dados estruturados LocalBusiness (schema.org) para o JSON-LD do <head>.
+ * Reflete apenas o que já está publicado no rodapé (telefone, e-mail, horário,
+ * cidades atendidas) — sem endereço físico ainda (ver TODO em MUT_SITE_URL).
+ *
+ * @return array<string, mixed>
+ */
+function mut_local_business_jsonld(): array
+{
+    return [
+        '@context' => 'https://schema.org',
+        '@type' => 'LocalBusiness',
+        'name' => 'MUT Telecom',
+        'image' => MUT_SITE_URL . '/assets/og-image.jpg',
+        'description' => 'Internet de fibra óptica em Murici, Messias, Rio Largo e Branquinha, com atendimento local e suporte de verdade.',
+        'telephone' => MUT_PHONE_E164,
+        'email' => MUT_EMAIL,
+        'url' => MUT_SITE_URL,
+        'areaServed' => mut_cidades(),
+        'openingHoursSpecification' => [
+            [
+                '@type' => 'OpeningHoursSpecification',
+                'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                'opens' => '08:00',
+                'closes' => '20:00',
+            ],
+        ],
+    ];
 }
 
 /**

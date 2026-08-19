@@ -13,7 +13,7 @@ require __DIR__ . '/includes/header.php';
       <section class="mut-misc-6">
         <div class="mut-container-680">
           <div class="mut-eyebrow">Financeiro</div>
-          <h1 class="mut-heading-44">2ª via de boleto</h1>
+          <h1 class="mut-heading-44">2ª via de boleto MUT Telecom em Alagoas</h1>
           <p class="mut-muted-165">Consulte seus boletos pelo CPF ou CNPJ. Rápido e sem login.</p>
         </div>
       </section>

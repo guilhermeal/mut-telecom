@@ -14,7 +14,7 @@ require __DIR__ . '/includes/header.php';
         <div class="mut-pos-7"></div>
         <div class="mut-pos-17">
           <div class="mut-misc-38">MUT Empresas</div>
-          <h1 class="mut-heading-48">Internet que não pode parar o seu negócio</h1>
+          <h1 class="mut-heading-48">Internet empresarial de fibra óptica em Alagoas</h1>
           <p class="mut-misc-52">Link dedicado, IP fixo, SLA e suporte prioritário para empresas de Alagoas que dependem de conexão estável.</p>
           <a class="mut-btn-17" href="contato.php">Falar com um consultor</a>
         </div>

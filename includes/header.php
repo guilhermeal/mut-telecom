@@ -14,6 +14,10 @@ $pageDescription = $pageDescription ?? 'Internet de fibra óptica em Murici, Mes
 /** Página atual, usada para marcar o link ativo do menu com aria-current. */
 $mutCurrentPage = basename($_SERVER['SCRIPT_NAME'] ?? '');
 
+/** URL canônica e imagem de preview social (absolutas, para OG/Twitter/JSON-LD). */
+$mutCanonicalUrl = MUT_SITE_URL . ($mutCurrentPage === 'index.php' || $mutCurrentPage === '' ? '/' : '/' . $mutCurrentPage);
+$mutOgImageUrl = MUT_SITE_URL . '/assets/og-image.jpg';
+
 /**
  * Retorna 'page' quando $file é a página atual, para uso em aria-current.
  */
@@ -30,6 +34,33 @@ function mut_nav_current(string $file): string
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($pageTitle) ?></title>
 <meta name="description" content="<?= e($pageDescription) ?>">
+<meta name="geo.region" content="BR-AL">
+<meta name="geo.placename" content="Alagoas">
+<link rel="canonical" href="<?= e($mutCanonicalUrl) ?>">
+
+<!-- Open Graph (Facebook, WhatsApp, LinkedIn, etc.) -->
+<meta property="og:site_name" content="MUT Telecom">
+<meta property="og:title" content="<?= e($pageTitle) ?>">
+<meta property="og:description" content="<?= e($pageDescription) ?>">
+<meta property="og:url" content="<?= e($mutCanonicalUrl) ?>">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="<?= e($mutOgImageUrl) ?>">
+<meta property="og:image:secure_url" content="<?= e($mutOgImageUrl) ?>">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MUT Telecom — fibra óptica em Alagoas">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<?= e($pageTitle) ?>">
+<meta name="twitter:description" content="<?= e($pageDescription) ?>">
+<meta name="twitter:image" content="<?= e($mutOgImageUrl) ?>">
+
+<!-- Dados estruturados LocalBusiness (schema.org) -->
+<script type="application/ld+json"><?= json_encode(mut_local_business_jsonld(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) ?></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">

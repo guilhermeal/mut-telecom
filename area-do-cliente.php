@@ -14,7 +14,7 @@ require __DIR__ . '/includes/header.php';
         <div class="mut-misc-67">
           <div class="mut-misc-84">
             <div class="mut-heading-32-3">MUT<svg class="mut-pos-10" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="15" height="15" fill="var(--accent)"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
-            <h1 class="mut-heading-24-2">Área do Cliente</h1>
+            <h1 class="mut-heading-24-2">Área do Cliente MUT Telecom em Alagoas</h1>
             <p class="mut-muted-145-3">Acesse suas faturas, plano e suporte.</p>
           </div>
           <form class="mut-misc-32" id="mut-login-form" novalidate>
@@ -35,7 +35,7 @@ require __DIR__ . '/includes/header.php';
       <section id="mut-logged-in" class="hidden sec-pad mut-misc-17">
         <div class="mut-container-1100">
           <div class="mut-row-21">
-            <div><h1 class="mut-heading-30-4">Olá, cliente 👋</h1><p class="mut-muted-145-4">Bem-vindo à sua área MUT.</p></div>
+            <div><h2 class="mut-heading-30-4">Olá, cliente 👋</h2><p class="mut-muted-145-4">Bem-vindo à sua área MUT.</p></div>
             <button type="button" id="mut-logout" class="mut-outline-hover mut-card-23">Sair</button>
           </div>
           <div class="grid-3 mut-grid-17">

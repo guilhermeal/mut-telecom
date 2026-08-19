@@ -11,7 +11,7 @@ require __DIR__ . '/includes/header.php';
       <section class="mut-misc-6">
         <div class="mut-container-760">
           <div class="mut-eyebrow">Contato</div>
-          <h1 class="mut-heading-46">Fale com a gente</h1>
+          <h1 class="mut-heading-46">Fale com a MUT Telecom em Alagoas</h1>
           <p class="mut-muted-17">Tire dúvidas, peça orçamento ou agende sua instalação. Respondemos rapidinho.</p>
         </div>
       </section>

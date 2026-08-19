@@ -11,7 +11,7 @@ require __DIR__ . '/includes/header.php';
       <section class="mut-misc-76">
         <div class="mut-container-820">
           <div class="mut-eyebrow">Sobre a MUT</div>
-          <h1 class="mut-heading-46-2">Fibra feita por gente da sua região</h1>
+          <h1 class="mut-heading-46-2">MUT Telecom: fibra óptica feita por gente de Alagoas</h1>
           <p class="mut-muted-18">A MUT Telecom nasceu para levar internet de fibra óptica de verdade ao interior de Alagoas — com a velocidade das grandes operadoras e o atendimento de quem é da terra.</p>
         </div>
       </section>

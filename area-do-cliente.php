@@ -13,7 +13,8 @@ require __DIR__ . '/includes/header.php';
       <section class="mut-misc-81" id="mut-logged-out">
         <div class="mut-misc-67">
           <div class="mut-misc-84">
-            <img src="assets/MUT_full_logo.png" alt="MUT Telecom" class="mut-logo mut-logo--lg">
+            <img src="assets/MUT_full_logo.png" alt="MUT Telecom" class="mut-logo mut-logo--lg mut-logo-light">
+            <img src="assets/MUT_full_logo_dark.png" alt="MUT Telecom" class="mut-logo mut-logo--lg mut-logo-dark">
             <h1 class="mut-heading-24-2">Área do Cliente MUT Telecom em Alagoas</h1>
             <p class="mut-muted-145-3">Acesse suas faturas, plano e suporte.</p>
           </div>

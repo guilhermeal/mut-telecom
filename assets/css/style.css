@@ -141,9 +141,15 @@ body.dark .theme-icon-moon { display: none; }
 
 /* logomarca oficial (assets/MUT_full_logo.png), reaproveitada em navbar/footer/drawer/login */
 .mut-logo { width: auto; }
-.mut-logo--nav { height: 40px; }
+.mut-logo--nav { height: 52px; }
 .mut-logo--sm { height: 26px; }
 .mut-logo--lg { height: 64px; }
+.mut-logo--xl { height: 82px; }
+.mut-logo--xxl { height: 128px; }
+
+/* alterna entre a versão clara (MUT_full_logo.png) e escura (MUT_full_logo_dark.png) conforme o tema */
+body.dark .mut-logo-light { display: none; }
+body:not(.dark) .mut-logo-dark { display: none; }
 
 /* bloco de preço do card de plano (com desconto pontualidade opcional) */
 .mut-plan-price-block { margin-top: 14px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
@@ -204,7 +210,7 @@ body.dark .theme-icon-moon { display: none; }
 .mut-card-16 { background:var(--surface); border:1px solid var(--border); border-radius:26px; padding:24px; box-shadow:var(--shadow-sm); } /* 1x: index */
 .mut-card-17 { display:flex; align-items:center; gap:14px; padding:20px; border-radius:16px; background:var(--surface); border:1px solid var(--border); cursor:pointer; transition:transform .18s; text-decoration:none; color:inherit; } /* 1x: contato */
 .mut-card-18 { display:flex; align-items:flex-start; gap:14px; padding:20px; border-radius:16px; background:var(--surface); border:1px solid var(--border); } /* 1x: contato */
-.mut-card-19 { display:inline-flex; align-items:center; gap:8px; padding:7px 13px; border-radius:9px; background:var(--background); border:1px solid var(--border); font-size:12.5px; font-weight:600; color:var(--muted); } /* 1x: includes/footer */
+.mut-card-19 { display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:9px; background:var(--background); border:1px solid var(--border); font-size:12.5px; font-weight:600; color:var(--muted); } /* 1x: includes/footer */
 .mut-card-20 { margin-top:32px; background:var(--background); border:1px solid var(--border); border-radius:18px; overflow:hidden; } /* 1x: segunda-via */
 .mut-card-21 { margin-top:56px; background:var(--surface); border:1px solid var(--border); border-radius:22px; padding:30px; } /* 1x: planos */
 .mut-card-22 { max-width:1000px; margin:0 auto; background:var(--background); border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); padding:18px 22px; display:flex; flex-wrap:wrap; align-items:center; gap:16px; justify-content:space-between; } /* 1x: includes/footer */

@@ -115,7 +115,8 @@ function mut_nav_current(string $file): string
     <nav class="mut-misc-64" aria-label="Navegação principal">
       <!-- logo -->
       <a class="mut-row-15" href="/" aria-label="MUT Telecom — página inicial">
-        <img src="assets/MUT_full_logo.png" alt="" class="mut-logo mut-logo--nav">
+        <img src="assets/MUT_full_logo.png" alt="" class="mut-logo mut-logo--nav mut-logo-light">
+        <img src="assets/MUT_full_logo_dark.png" alt="" class="mut-logo mut-logo--nav mut-logo-dark">
       </a>
       <!-- center links -->
       <div class="nav-desktop mut-row-18">
@@ -142,7 +143,8 @@ function mut_nav_current(string $file): string
   <div id="mut-drawer" class="hidden mut-pos-13" role="dialog" aria-modal="true" aria-label="Menu de navegação">
     <div class="mut-pos-11">
       <div class="mut-row-27">
-        <img src="assets/MUT_full_logo.png" alt="MUT Telecom" class="mut-logo mut-logo--sm">
+        <img src="assets/MUT_full_logo.png" alt="MUT Telecom" class="mut-logo mut-logo--sm mut-logo-light">
+        <img src="assets/MUT_full_logo_dark.png" alt="MUT Telecom" class="mut-logo mut-logo--sm mut-logo-dark">
         <button class="mut-card-28" type="button" id="mut-drawer-close" aria-label="Fechar menu"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
       </div>
       <nav class="mut-row-20" aria-label="Menu mobile">

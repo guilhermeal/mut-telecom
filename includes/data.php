@@ -117,15 +117,16 @@ function mut_partners(): array
 
 /**
  * Faturas mockadas (placeholder até a integração com a API financeira).
+ * 'statusClasse' é o modificador CSS (.mut-status--*) correspondente ao status.
  *
- * @return array<int, array{venc: string, valor: string, status: string, cor: string, bg: string}>
+ * @return array<int, array{venc: string, valor: string, status: string, statusClasse: string}>
  */
 function mut_faturas_mock(): array
 {
     return [
-        ['venc' => '10/06/2026', 'valor' => 'R$ 99,90', 'status' => 'Em aberto', 'cor' => '#b8860b', 'bg' => 'rgba(184,134,11,.12)'],
-        ['venc' => '10/05/2026', 'valor' => 'R$ 99,90', 'status' => 'Pago', 'cor' => '#1f8a5b', 'bg' => 'rgba(31,138,91,.12)'],
-        ['venc' => '10/04/2026', 'valor' => 'R$ 99,90', 'status' => 'Pago', 'cor' => '#1f8a5b', 'bg' => 'rgba(31,138,91,.12)'],
+        ['venc' => '10/06/2026', 'valor' => 'R$ 99,90', 'status' => 'Em aberto', 'statusClasse' => 'aberto'],
+        ['venc' => '10/05/2026', 'valor' => 'R$ 99,90', 'status' => 'Pago', 'statusClasse' => 'pago'],
+        ['venc' => '10/04/2026', 'valor' => 'R$ 99,90', 'status' => 'Pago', 'statusClasse' => 'pago'],
     ];
 }
 
@@ -153,23 +154,23 @@ function e(?string $value): string
 function mut_render_plan_card(array $plan): void
 {
     ?>
-            <div class="mut-card-hover-sm" style="position:relative; background:var(--background); border:1px solid var(--border); border-radius:24px; padding:30px 26px; display:flex; flex-direction:column; box-shadow:var(--shadow-sm); transition:transform .2s, box-shadow .2s;">
+            <div class="mut-card-hover-sm mut-card-26">
 <?php if ($plan['destaque']): ?>
-              <div style="position:absolute; inset:0; border:2px solid var(--accent); border-radius:24px; pointer-events:none;"></div>
-              <div style="position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; font-size:12px; font-weight:700; padding:6px 16px; border-radius:999px; white-space:nowrap; box-shadow:0 3px 8px rgba(195,9,8,.22);">MAIS ASSINADO</div>
+              <div class="mut-pos"></div>
+              <div class="mut-pos-5">MAIS ASSINADO</div>
 <?php endif; ?>
-              <div style="font-family:'Archivo',sans-serif; font-weight:700; font-size:16px; color:var(--muted);"><?= e($plan['nome']) ?></div>
-              <div style="display:flex; align-items:baseline; gap:6px; margin:10px 0 4px;"><span style="font-family:'Archivo',sans-serif; font-weight:800; font-size:46px; line-height:1; letter-spacing:-2px; color:var(--primary);"><?= e($plan['vel']) ?></span><span style="font-size:18px; font-weight:600; color:var(--foreground);"><?= e($plan['unit']) ?></span></div>
-              <div style="display:flex; align-items:baseline; gap:3px; margin-top:14px; padding-bottom:18px; border-bottom:1px solid var(--border);"><span style="font-size:15px; color:var(--muted);">R$</span><span style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px;"><?= e($plan['preco']) ?></span><span style="font-size:14px; color:var(--muted);">/mês</span></div>
-              <div style="display:grid; gap:11px; margin:20px 0 22px;">
+              <div class="mut-muted-16"><?= e($plan['nome']) ?></div>
+              <div class="mut-row-4"><span class="mut-heading-46-3"><?= e($plan['vel']) ?></span><span class="mut-misc-50"><?= e($plan['unit']) ?></span></div>
+              <div class="mut-row-3"><span class="mut-muted-15-2">R$</span><span class="mut-heading-30"><?= e($plan['preco']) ?></span><span class="mut-muted-14-2">/mês</span></div>
+              <div class="mut-grid-3">
 <?php foreach ($plan['features'] as $feat): ?>
-                <div style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--foreground);"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M20 6L9 17l-5-5"/></svg><?= e($feat) ?></div>
+                <div class="mut-row-13"><svg class="mut-misc-15" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><?= e($feat) ?></div>
 <?php endforeach; ?>
 <?php if ($plan['combos']): ?>
-                <div style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--accent); font-weight:600;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 3v18l7-5 7 5V3z"/></svg>Combos de streaming</div>
+                <div class="mut-row-12"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 3v18l7-5 7 5V3z"/></svg>Combos de streaming</div>
 <?php endif; ?>
               </div>
-              <a href="<?= e($plan['wa']) ?>" target="_blank" rel="noopener" class="mut-lift" style="margin-top:auto; text-align:center; padding:13px; border-radius:12px; font-weight:700; font-size:14.5px; color:var(--accent-fg); background:var(--accent); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:transform .18s; text-decoration:none;"><?= mut_icon_whatsapp(17) ?>Assinar agora</a>
+              <a href="<?= e($plan['wa']) ?>" target="_blank" rel="noopener" class="mut-lift mut-btn-6"><?= mut_icon_whatsapp(17) ?>Assinar agora</a>
             </div>
 <?php
 }
@@ -193,12 +194,13 @@ function mut_main_nav_items(): array
 
 /**
  * Renderiza um link de navegação, marcando aria-current quando aplicável.
- * Usado tanto na navbar desktop (mut-nav-link) quanto na drawer mobile (mut-drawer-link).
+ * Usado tanto na navbar desktop (mut-nav-link) quanto na drawer mobile (mut-drawer-link)
+ * — o estilo base de cada variante vive em assets/css/style.css.
  */
-function mut_render_nav_link(string $href, string $label, string $class, string $style): void
+function mut_render_nav_link(string $href, string $label, string $class): void
 {
     ?>
-        <a href="<?= e($href) ?>" class="<?= e($class) ?>" style="<?= e($style) ?>"<?= mut_nav_current($href) ?>><?= e($label) ?></a>
+        <a href="<?= e($href) ?>" class="<?= e($class) ?>"<?= mut_nav_current($href) ?>><?= e($label) ?></a>
 <?php
 }
 
@@ -208,9 +210,9 @@ function mut_render_nav_link(string $href, string $label, string $class, string 
  */
 function mut_render_theme_toggle_button(string $id, bool $withTransition = true): void
 {
-    $style = 'width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--foreground); cursor:pointer;' . ($withTransition ? ' transition:all .15s;' : '');
+    $class = 'mut-theme-btn' . ($withTransition ? ' mut-theme-btn--transition' : '');
     ?>
-        <button type="button" id="<?= e($id) ?>" class="mut-theme-btn" aria-label="Ativar tema escuro" aria-pressed="false" style="<?= e($style) ?>">
+        <button type="button" id="<?= e($id) ?>" class="<?= e($class) ?>" aria-label="Ativar tema escuro" aria-pressed="false">
           <svg class="theme-icon-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
           <svg class="theme-icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         </button>
@@ -221,11 +223,12 @@ function mut_render_theme_toggle_button(string $id, bool $withTransition = true)
  * Renderiza o par de botões Residencial/Empresarial que alterna os grupos
  * de planos exibidos (comportamento client-side, ver assets/js/main.js).
  */
-function mut_render_plan_toggle(string $wrapperBg = 'var(--background)'): void
+function mut_render_plan_toggle(string $variant = 'on-background'): void
 {
+    $wrapperClass = 'mut-plan-toggle-wrap mut-plan-toggle-wrap--' . ($variant === 'on-surface' ? 'on-surface' : 'on-background');
     ?>
-          <div style="display:flex; justify-content:center; margin-bottom:44px;">
-            <div role="tablist" aria-label="Tipo de plano" style="display:inline-flex; background:<?= e($wrapperBg) ?>; border:1px solid var(--border); border-radius:13px; padding:5px; gap:4px;">
+          <div class="mut-plan-toggle-outer">
+            <div role="tablist" aria-label="Tipo de plano" class="<?= e($wrapperClass) ?>">
               <button type="button" id="mut-plan-tab-residencial" role="tab" aria-selected="true" aria-controls="mut-plan-panel-residencial" class="mut-plan-pill is-active" data-plan-type="residencial">Residencial</button>
               <button type="button" id="mut-plan-tab-empresarial" role="tab" aria-selected="false" aria-controls="mut-plan-panel-empresarial" class="mut-plan-pill" data-plan-type="empresarial">Empresarial</button>
             </div>

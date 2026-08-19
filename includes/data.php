@@ -128,6 +128,21 @@ function mut_cidades(): array
 }
 
 /**
+ * Endereços físicos dos escritórios da MUT, por cidade atendida.
+ *
+ * @return array<int, array{cidade: string, endereco: string}>
+ */
+function mut_office_addresses(): array
+{
+    return [
+        ['cidade' => 'Murici', 'endereco' => 'Rua Firmino de Queiroz, 101A'],
+        ['cidade' => 'Messias', 'endereco' => 'Rua Floriano Peixoto, S/N'],
+        ['cidade' => 'Rio Largo', 'endereco' => 'Conjunto Jarbas Maia Oiticica, Quadra A5, nº 01'],
+        ['cidade' => 'Branquinha', 'endereco' => 'Rua Prado Omena, S/N'],
+    ];
+}
+
+/**
  * @return array<int, string>
  */
 function mut_partners(): array

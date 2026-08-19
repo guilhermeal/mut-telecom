@@ -26,6 +26,25 @@ require __DIR__ . '/includes/header.php';
         </div>
       </section>
 
+      <!-- escritórios físicos por cidade -->
+      <section class="sec-pad mut-misc-74">
+        <div class="mut-container-1240">
+          <div class="mut-eyebrow">Onde estamos</div>
+          <h2 class="mut-heading-26-2">Pontos de atendimento</h2>
+          <div class="grid-4 mut-grid-23">
+<?php foreach (mut_office_addresses() as $office): ?>
+            <div class="mut-card-5">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <div class="mut-iconbox-48-2"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+                <h3 class="mut-misc-10"><?= e($office['cidade']) ?></h3>
+              </div>
+              <p class="mut-muted-145-2"><?= e($office['endereco']) ?></p>
+            </div>
+<?php endforeach; ?>
+          </div>
+        </div>
+      </section>
+
       <!-- viabilidade por e-mail -->
       <section class="sec-pad mut-misc-73">
         <div class="mut-container-1240">

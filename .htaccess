@@ -16,6 +16,11 @@ Options -Indexes
 
 RewriteEngine On
 
+# Bloqueia qualquer acesso à pasta .git (e seu conteúdo), caso ela seja
+# publicada por engano — o FilesMatch "^\." acima só pega arquivos soltos,
+# não o que está dentro de uma pasta com nome iniciado por ponto.
+RewriteRule ^\.git(/|$) - [F,L]
+
 # /index ou /index.php -> raiz (evita URL duplicada para a home)
 RewriteCond %{THE_REQUEST} \s/(\S*/)?index(\.php)?[?\s] [NC]
 RewriteRule ^ /%1 [R=301,L]

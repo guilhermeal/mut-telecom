@@ -175,6 +175,49 @@ function mut_render_plan_card(array $plan): void
 }
 
 /**
+ * Itens do menu principal (usados na navbar desktop e na drawer mobile),
+ * ver includes/header.php.
+ *
+ * @return array<int, array{href: string, label: string}>
+ */
+function mut_main_nav_items(): array
+{
+    return [
+        ['href' => 'planos.php', 'label' => 'Planos'],
+        ['href' => 'cobertura.php', 'label' => 'Cobertura'],
+        ['href' => 'empresas.php', 'label' => 'Para Empresas'],
+        ['href' => 'sobre.php', 'label' => 'Sobre'],
+        ['href' => 'ajuda.php', 'label' => 'Ajuda'],
+    ];
+}
+
+/**
+ * Renderiza um link de navegação, marcando aria-current quando aplicável.
+ * Usado tanto na navbar desktop (mut-nav-link) quanto na drawer mobile (mut-drawer-link).
+ */
+function mut_render_nav_link(string $href, string $label, string $class, string $style): void
+{
+    ?>
+        <a href="<?= e($href) ?>" class="<?= e($class) ?>" style="<?= e($style) ?>"<?= mut_nav_current($href) ?>><?= e($label) ?></a>
+<?php
+}
+
+/**
+ * Renderiza o botão de alternância de tema (sol/lua), reutilizado na navbar
+ * desktop e no cabeçalho mobile — os dois só diferem em id e na transição CSS.
+ */
+function mut_render_theme_toggle_button(string $id, bool $withTransition = true): void
+{
+    $style = 'width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--foreground); cursor:pointer;' . ($withTransition ? ' transition:all .15s;' : '');
+    ?>
+        <button type="button" id="<?= e($id) ?>" class="mut-theme-btn" aria-label="Ativar tema escuro" aria-pressed="false" style="<?= e($style) ?>">
+          <svg class="theme-icon-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="theme-icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+<?php
+}
+
+/**
  * Renderiza o par de botões Residencial/Empresarial que alterna os grupos
  * de planos exibidos (comportamento client-side, ver assets/js/main.js).
  */

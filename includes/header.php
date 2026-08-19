@@ -65,28 +65,20 @@ function mut_nav_current(string $file): string
       </a>
       <!-- center links -->
       <div class="nav-desktop" style="display:flex; align-items:center; gap:6px;">
-        <a href="planos.php" class="mut-nav-link" style="padding:9px 13px; border-radius:9px; font-size:15px; font-weight:500; color:var(--foreground); cursor:pointer; transition:background .15s; text-decoration:none;"<?= mut_nav_current('planos.php') ?>>Planos</a>
-        <a href="cobertura.php" class="mut-nav-link" style="padding:9px 13px; border-radius:9px; font-size:15px; font-weight:500; color:var(--foreground); cursor:pointer; transition:background .15s; text-decoration:none;"<?= mut_nav_current('cobertura.php') ?>>Cobertura</a>
-        <a href="empresas.php" class="mut-nav-link" style="padding:9px 13px; border-radius:9px; font-size:15px; font-weight:500; color:var(--foreground); cursor:pointer; transition:background .15s; text-decoration:none;"<?= mut_nav_current('empresas.php') ?>>Para Empresas</a>
-        <a href="sobre.php" class="mut-nav-link" style="padding:9px 13px; border-radius:9px; font-size:15px; font-weight:500; color:var(--foreground); cursor:pointer; transition:background .15s; text-decoration:none;"<?= mut_nav_current('sobre.php') ?>>Sobre</a>
-        <a href="ajuda.php" class="mut-nav-link" style="padding:9px 13px; border-radius:9px; font-size:15px; font-weight:500; color:var(--foreground); cursor:pointer; transition:background .15s; text-decoration:none;"<?= mut_nav_current('ajuda.php') ?>>Ajuda</a>
+<?php foreach (mut_main_nav_items() as $navItem): ?>
+        <?php mut_render_nav_link($navItem['href'], $navItem['label'], 'mut-nav-link', 'padding:9px 13px; border-radius:9px; font-size:15px; font-weight:500; color:var(--foreground); cursor:pointer; transition:background .15s; text-decoration:none;'); ?>
+<?php endforeach; ?>
       </div>
       <!-- right actions -->
       <div class="nav-desktop" style="display:flex; align-items:center; gap:10px;">
         <a href="segunda-via.php" class="mut-btn-outline" style="padding:8px 14px; border-radius:10px; font-size:13.5px; font-weight:600; color:var(--primary); border:1.5px solid var(--primary); cursor:pointer; white-space:nowrap; transition:all .15s; text-decoration:none;"<?= mut_nav_current('segunda-via.php') ?>>2ª via de boleto</a>
         <a href="area-do-cliente.php" class="mut-client-link" style="font-size:14px; font-weight:500; color:var(--muted); cursor:pointer; white-space:nowrap; padding:6px; text-decoration:none;"<?= mut_nav_current('area-do-cliente.php') ?>>Área do Cliente</a>
-        <button type="button" id="mut-theme-toggle" class="mut-theme-btn" aria-label="Ativar tema escuro" aria-pressed="false" style="width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--foreground); cursor:pointer; transition:all .15s;">
-          <svg class="theme-icon-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-          <svg class="theme-icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        </button>
+        <?php mut_render_theme_toggle_button('mut-theme-toggle', withTransition: true); ?>
         <a href="planos.php" class="mut-cta-accent" style="padding:11px 20px; border-radius:11px; font-size:14.5px; font-weight:700; color:var(--accent-fg); background:var(--accent); border:none; cursor:pointer; box-shadow:0 4px 12px rgba(195,9,8,.20); transition:transform .18s, box-shadow .18s; text-decoration:none; display:inline-block;">Assine já</a>
       </div>
       <!-- mobile burger -->
       <div class="nav-burger" style="display:none; align-items:center; gap:8px;">
-        <button type="button" id="mut-theme-toggle-mobile" class="mut-theme-btn" aria-label="Ativar tema escuro" aria-pressed="false" style="width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--foreground); cursor:pointer;">
-          <svg class="theme-icon-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-          <svg class="theme-icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        </button>
+        <?php mut_render_theme_toggle_button('mut-theme-toggle-mobile', withTransition: false); ?>
         <button type="button" id="mut-drawer-open" aria-label="Abrir menu" aria-haspopup="dialog" aria-expanded="false" aria-controls="mut-drawer" style="width:42px; height:42px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--foreground); cursor:pointer;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
       </div>
     </nav>
@@ -100,11 +92,9 @@ function mut_nav_current(string $file): string
         <button type="button" id="mut-drawer-close" aria-label="Fechar menu" style="width:38px; height:38px; border-radius:9px; border:1px solid var(--border); background:var(--surface); color:var(--foreground); cursor:pointer; display:inline-flex; align-items:center; justify-content:center;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
       </div>
       <nav aria-label="Menu mobile" style="display:flex; flex-direction:column; gap:6px;">
-        <a href="planos.php" class="mut-drawer-link" style="padding:13px 12px; border-radius:11px; font-weight:600; color:var(--foreground); cursor:pointer; text-decoration:none;"<?= mut_nav_current('planos.php') ?>>Planos</a>
-        <a href="cobertura.php" class="mut-drawer-link" style="padding:13px 12px; border-radius:11px; font-weight:600; color:var(--foreground); cursor:pointer; text-decoration:none;"<?= mut_nav_current('cobertura.php') ?>>Cobertura</a>
-        <a href="empresas.php" class="mut-drawer-link" style="padding:13px 12px; border-radius:11px; font-weight:600; color:var(--foreground); cursor:pointer; text-decoration:none;"<?= mut_nav_current('empresas.php') ?>>Para Empresas</a>
-        <a href="sobre.php" class="mut-drawer-link" style="padding:13px 12px; border-radius:11px; font-weight:600; color:var(--foreground); cursor:pointer; text-decoration:none;"<?= mut_nav_current('sobre.php') ?>>Sobre</a>
-        <a href="ajuda.php" class="mut-drawer-link" style="padding:13px 12px; border-radius:11px; font-weight:600; color:var(--foreground); cursor:pointer; text-decoration:none;"<?= mut_nav_current('ajuda.php') ?>>Ajuda</a>
+<?php foreach (mut_main_nav_items() as $navItem): ?>
+        <?php mut_render_nav_link($navItem['href'], $navItem['label'], 'mut-drawer-link', 'padding:13px 12px; border-radius:11px; font-weight:600; color:var(--foreground); cursor:pointer; text-decoration:none;'); ?>
+<?php endforeach; ?>
       </nav>
       <div style="height:1px; background:var(--border); margin:10px 0;" role="separator"></div>
       <a href="segunda-via.php" style="padding:13px 12px; border-radius:11px; font-weight:600; color:var(--primary); border:1.5px solid var(--primary); text-align:center; cursor:pointer; text-decoration:none;"<?= mut_nav_current('segunda-via.php') ?>>2ª via de boleto</a>

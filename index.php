@@ -30,7 +30,7 @@ require __DIR__ . '/includes/header.php';
             <h1 class="h1" style="font-family:'Archivo',sans-serif; font-weight:800; font-size:38px; line-height:1.14; letter-spacing:-1.2px; margin:0 0 16px; color:#fff; text-wrap:balance;">A internet que a sua cidade esperava.</h1>
             <p style="font-size:18px; line-height:1.55; color:rgba(255,255,255,.86); margin:0 0 30px; max-width:520px;">Fibra óptica com sinal firme e atendimento de gente da região, em Murici, Messias, Rio Largo e Branquinha.</p>
             <div style="display:flex; gap:12px; flex-wrap:wrap;">
-              <a href="planos.php" class="mut-lift" style="padding:14px 26px; border-radius:12px; font-weight:700; font-size:15.5px; color:var(--accent-fg); background:var(--accent); border:none; cursor:pointer; box-shadow:0 10px 26px rgba(195,9,8,.35); transition:transform .18s; text-decoration:none; display:inline-block;">Ver planos e preços</a>
+              <a href="planos.php" class="mut-lift" style="padding:14px 26px; border-radius:12px; font-weight:700; font-size:15.5px; color:var(--accent-fg); background:var(--accent); border:none; cursor:pointer; box-shadow:0 6px 16px rgba(195,9,8,.20); transition:transform .18s; text-decoration:none; display:inline-block;">Ver planos e preços</a>
               <a href="<?= e(mut_whatsapp_float_link()) ?>" target="_blank" rel="noopener" class="mut-outline-hover" style="padding:14px 26px; border-radius:12px; font-weight:600; font-size:15.5px; color:#fff; background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.5); cursor:pointer; display:inline-flex; align-items:center; gap:9px; transition:all .18s; text-decoration:none;"><?= mut_icon_whatsapp() ?>Falar no WhatsApp</a>
             </div>
           </div>
@@ -51,7 +51,7 @@ require __DIR__ . '/includes/header.php';
         <div style="max-width:760px; margin:0 auto; padding:0 24px; text-align:center;">
           <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:32px; letter-spacing:-1px; margin:0 0 12px; color:#fff;">Veja se a MUT já chegou na sua rua</h2>
           <p style="font-size:16px; color:rgba(255,255,255,.85); margin:0 0 28px;">Digite seu CEP ou cidade e descubra na hora.</p>
-          <form id="mut-coverage-form" style="background:var(--background); border-radius:18px; padding:18px; box-shadow:0 20px 50px rgba(0,0,0,.25); max-width:560px; margin:0 auto;">
+          <form id="mut-coverage-form" style="background:var(--background); border-radius:18px; padding:18px; box-shadow:0 16px 32px rgba(16,42,82,.14); max-width:560px; margin:0 auto;">
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
               <input id="mut-coverage-input" class="mut-input" placeholder="Digite seu CEP ou cidade" aria-label="CEP ou cidade" style="flex:1; min-width:180px; padding:14px 16px; border-radius:12px; border:1.5px solid var(--border); background:var(--surface); color:var(--foreground); font-size:15px; font-family:inherit; outline:none;">
               <button type="submit" id="mut-coverage-submit" style="padding:14px 22px; border-radius:12px; font-weight:700; font-size:15px; color:var(--accent-fg); background:var(--accent); border:none; cursor:pointer; display:inline-flex; align-items:center; gap:8px; white-space:nowrap; transition:transform .18s;">
@@ -228,7 +228,7 @@ require __DIR__ . '/includes/header.php';
       <!-- EMPRESAS CTA -->
       <section class="sec-pad" style="padding:80px 0;">
         <div style="max-width:1240px; margin:0 auto; padding:0 24px;">
-          <div class="split" style="background:linear-gradient(135deg, var(--primary), #062f6e); border-radius:28px; padding:52px; display:grid; grid-template-columns:1.4fr 1fr; gap:32px; align-items:center; color:#fff; box-shadow:0 30px 70px rgba(10,68,154,.3); position:relative; overflow:hidden;">
+          <div class="split" style="background:linear-gradient(135deg, var(--primary), #062f6e); border-radius:28px; padding:52px; display:grid; grid-template-columns:1.4fr 1fr; gap:32px; align-items:center; color:#fff; box-shadow:0 16px 36px rgba(10,68,154,.18); position:relative; overflow:hidden;">
             <div style="position:absolute; top:-60px; right:-30px; width:240px; height:240px; border-radius:50%; background:rgba(255,255,255,.06);"></div>
             <div style="position:relative;">
               <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:34px; letter-spacing:-1px; margin:0 0 12px;">Soluções de internet para o seu negócio</h2>
@@ -266,7 +266,7 @@ require __DIR__ . '/includes/header.php';
           <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:42px; letter-spacing:-1.5px; margin:0 0 14px; text-wrap:balance;">Pronto para se conectar ao futuro?</h2>
           <p style="font-size:17px; color:var(--muted); margin:0 0 30px;">Fibra de verdade, suporte da sua região. Assine em minutos.</p>
           <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-            <a href="planos.php" class="mut-lift" style="padding:15px 30px; border-radius:13px; font-weight:700; font-size:16px; color:var(--accent-fg); background:var(--accent); border:none; cursor:pointer; box-shadow:0 8px 22px rgba(195,9,8,.3); transition:transform .18s; text-decoration:none;">Assine já</a>
+            <a href="planos.php" class="mut-lift" style="padding:15px 30px; border-radius:13px; font-weight:700; font-size:16px; color:var(--accent-fg); background:var(--accent); border:none; cursor:pointer; box-shadow:0 6px 16px rgba(195,9,8,.20); transition:transform .18s; text-decoration:none;">Assine já</a>
             <a href="<?= e(mut_whatsapp_float_link()) ?>" target="_blank" rel="noopener" class="mut-outline-hover" style="padding:15px 30px; border-radius:13px; font-weight:600; font-size:16px; color:var(--foreground); background:transparent; border:1.5px solid var(--border); cursor:pointer; display:inline-flex; align-items:center; gap:9px; transition:all .18s; text-decoration:none;"><?= mut_icon_whatsapp(19) ?>Falar no WhatsApp</a>
           </div>
         </div>

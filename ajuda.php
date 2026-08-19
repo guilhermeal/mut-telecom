@@ -16,7 +16,7 @@ require __DIR__ . '/includes/header.php';
           <form role="search" style="position:relative; max-width:560px; margin:0 auto;" onsubmit="return false;">
             <label for="mut-help-search" class="mut-visually-hidden">Buscar na Central de Ajuda</label>
             <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" style="position:absolute; left:18px; top:50%; transform:translateY(-50%);"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
-            <input id="mut-help-search" type="search" placeholder="Busque por um tema (ex.: instalação, boleto, Wi-Fi)" style="width:100%; padding:16px 18px 16px 48px; border-radius:14px; border:none; background:#fff; color:#131313; font-size:15.5px; font-family:inherit; outline:none; box-shadow:0 10px 30px rgba(0,0,0,.2);">
+            <input id="mut-help-search" type="search" placeholder="Busque por um tema (ex.: instalação, boleto, Wi-Fi)" style="width:100%; padding:16px 18px 16px 48px; border-radius:14px; border:none; background:#fff; color:#131313; font-size:15.5px; font-family:inherit; outline:none; box-shadow:0 8px 20px rgba(16,42,82,.12);">
           </form>
         </div>
       </section>

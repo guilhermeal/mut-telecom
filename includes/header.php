@@ -79,7 +79,7 @@ function mut_nav_current(string $file): string
           <svg class="theme-icon-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
           <svg class="theme-icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         </button>
-        <a href="planos.php" class="mut-cta-accent" style="padding:11px 20px; border-radius:11px; font-size:14.5px; font-weight:700; color:var(--accent-fg); background:var(--accent); border:none; cursor:pointer; box-shadow:0 6px 18px rgba(195,9,8,.28); transition:transform .18s, box-shadow .18s; text-decoration:none; display:inline-block;">Assine já</a>
+        <a href="planos.php" class="mut-cta-accent" style="padding:11px 20px; border-radius:11px; font-size:14.5px; font-weight:700; color:var(--accent-fg); background:var(--accent); border:none; cursor:pointer; box-shadow:0 4px 12px rgba(195,9,8,.20); transition:transform .18s, box-shadow .18s; text-decoration:none; display:inline-block;">Assine já</a>
       </div>
       <!-- mobile burger -->
       <div class="nav-burger" style="display:none; align-items:center; gap:8px;">
@@ -94,7 +94,7 @@ function mut_nav_current(string $file): string
 
   <!-- ============ MOBILE DRAWER ============ -->
   <div id="mut-drawer" class="hidden" role="dialog" aria-modal="true" aria-label="Menu de navegação" style="position:fixed; inset:0; z-index:60; background:rgba(8,14,26,.5); backdrop-filter:blur(2px);">
-    <div style="position:absolute; top:0; right:0; height:100%; width:min(82vw,340px); background:var(--background); border-left:1px solid var(--border); padding:22px; display:flex; flex-direction:column; gap:6px; box-shadow:-20px 0 60px rgba(0,0,0,.25);">
+    <div style="position:absolute; top:0; right:0; height:100%; width:min(82vw,340px); background:var(--background); border-left:1px solid var(--border); padding:22px; display:flex; flex-direction:column; gap:6px; box-shadow:-12px 0 32px rgba(16,42,82,.16);">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
         <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:22px; letter-spacing:-1px; color:var(--primary);" aria-hidden="true">MUT</div>
         <button type="button" id="mut-drawer-close" aria-label="Fechar menu" style="width:38px; height:38px; border-radius:9px; border:1px solid var(--border); background:var(--surface); color:var(--foreground); cursor:pointer; display:inline-flex; align-items:center; justify-content:center;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>

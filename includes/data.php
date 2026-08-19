@@ -156,7 +156,7 @@ function mut_render_plan_card(array $plan): void
             <div class="mut-card-hover-sm" style="position:relative; background:var(--background); border:1px solid var(--border); border-radius:24px; padding:30px 26px; display:flex; flex-direction:column; box-shadow:var(--shadow-sm); transition:transform .2s, box-shadow .2s;">
 <?php if ($plan['destaque']): ?>
               <div style="position:absolute; inset:0; border:2px solid var(--accent); border-radius:24px; pointer-events:none;"></div>
-              <div style="position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; font-size:12px; font-weight:700; padding:6px 16px; border-radius:999px; white-space:nowrap; box-shadow:0 6px 16px rgba(195,9,8,.3);">MAIS ASSINADO</div>
+              <div style="position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; font-size:12px; font-weight:700; padding:6px 16px; border-radius:999px; white-space:nowrap; box-shadow:0 3px 8px rgba(195,9,8,.22);">MAIS ASSINADO</div>
 <?php endif; ?>
               <div style="font-family:'Archivo',sans-serif; font-weight:700; font-size:16px; color:var(--muted);"><?= e($plan['nome']) ?></div>
               <div style="display:flex; align-items:baseline; gap:6px; margin:10px 0 4px;"><span style="font-family:'Archivo',sans-serif; font-weight:800; font-size:46px; line-height:1; letter-spacing:-2px; color:var(--primary);"><?= e($plan['vel']) ?></span><span style="font-size:18px; font-weight:600; color:var(--foreground);"><?= e($plan['unit']) ?></span></div>

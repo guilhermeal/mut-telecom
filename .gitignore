@@ -1,0 +1,13 @@
+# SO / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Ambiente local (se algum dia surgir configuração local sensível)
+.env
+.env.local

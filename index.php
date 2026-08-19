@@ -21,7 +21,7 @@ require __DIR__ . '/includes/header.php';
         <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(6,13,26,.95) 0%, rgba(6,13,26,.86) 26%, rgba(6,13,26,.55) 48%, rgba(6,13,26,.18) 68%, rgba(6,13,26,0) 84%);"></div>
         <div class="hero-grid" style="position:relative; width:100%; max-width:1240px; margin:0 auto; padding:96px 24px 100px; display:block;">
           <div style="max-width:640px;">
-            <div style="display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; background:rgba(255,255,255,.14); color:#fff; font-size:13px; font-weight:600; margin-bottom:20px;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0" stroke-linecap="round"/><circle cx="12" cy="19.5" r="1.4" fill="currentColor" stroke="none"/></svg>FIBRA ÓPTICA EM ALAGOAS</div>
+            <div style="display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; background:rgba(255,255,255,.14); color:#fff; font-size:13px; font-weight:600; margin-bottom:20px;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0" stroke-linecap="round"/><circle cx="12" cy="19.5" r="1.4" fill="currentColor" stroke="none"/></svg>FIBRA ÓPTICA EM ALAGOAS</div>
             <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px;">
               <span style="font-family:'Archivo',sans-serif; font-weight:800; font-size:118px; line-height:.9; letter-spacing:-4px; color:#fff;">500</span>
               <span style="font-family:'Archivo',sans-serif; font-weight:700; font-size:28px; color:rgba(255,255,255,.9);">MEGA</span>
@@ -55,12 +55,12 @@ require __DIR__ . '/includes/header.php';
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
               <input id="mut-coverage-input" class="mut-input" placeholder="Digite seu CEP ou cidade" aria-label="CEP ou cidade" style="flex:1; min-width:180px; padding:14px 16px; border-radius:12px; border:1.5px solid var(--border); background:var(--surface); color:var(--foreground); font-size:15px; font-family:inherit; outline:none;">
               <button type="submit" id="mut-coverage-submit" style="padding:14px 22px; border-radius:12px; font-weight:700; font-size:15px; color:var(--accent-fg); background:var(--accent); border:none; cursor:pointer; display:inline-flex; align-items:center; gap:8px; white-space:nowrap; transition:transform .18s;">
-                <span id="mut-coverage-spinner" class="hidden" style="width:16px; height:16px; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation:mutSpin .7s linear infinite; display:inline-block;"></span>
+                <span id="mut-coverage-spinner" class="hidden" aria-hidden="true" style="width:16px; height:16px; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation:mutSpin .7s linear infinite; display:inline-block;"></span>
                 Verificar cobertura
               </button>
             </div>
-            <div id="mut-coverage-yes" class="hidden" style="margin-top:14px; padding:13px 15px; border-radius:12px; background:rgba(31,138,91,.12); color:#1f8a5b; font-weight:600; font-size:14.5px; display:flex; align-items:center; gap:9px;"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Boa notícia! Temos cobertura na sua região 🎉</div>
-            <div id="mut-coverage-no" class="hidden" style="margin-top:14px; padding:13px 15px; border-radius:12px; background:rgba(195,9,8,.10); color:var(--accent); font-weight:600; font-size:14.5px; display:flex; align-items:center; gap:9px;"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>Ainda não chegamos aí — deixe seu contato e avisamos você.</div>
+            <div id="mut-coverage-yes" class="hidden" role="status" aria-live="polite" style="margin-top:14px; padding:13px 15px; border-radius:12px; background:rgba(31,138,91,.12); color:#1f8a5b; font-weight:600; font-size:14.5px; display:flex; align-items:center; gap:9px;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Boa notícia! Temos cobertura na sua região 🎉</div>
+            <div id="mut-coverage-no" class="hidden" role="status" aria-live="polite" style="margin-top:14px; padding:13px 15px; border-radius:12px; background:rgba(195,9,8,.10); color:var(--accent); font-weight:600; font-size:14.5px; display:flex; align-items:center; gap:9px;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>Ainda não chegamos aí — deixe seu contato e avisamos você.</div>
           </form>
         </div>
       </section>
@@ -75,32 +75,32 @@ require __DIR__ . '/includes/header.php';
           </div>
           <div class="grid-3" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
             <div class="mut-card-hover" style="background:var(--surface); border:1px solid var(--border); border-radius:22px; padding:28px; box-shadow:var(--shadow-sm); transition:transform .2s, box-shadow .2s;">
-              <div style="width:50px; height:50px; border-radius:14px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:18px;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1.2" fill="currentColor"/></svg></div>
+              <div style="width:50px; height:50px; border-radius:14px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:18px;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1.2" fill="currentColor"/></svg></div>
               <h3 style="font-family:'Archivo',sans-serif; font-weight:700; font-size:18px; margin:0 0 8px;">Fibra até dentro de casa</h3>
               <p style="font-size:14.5px; line-height:1.5; color:var(--muted); margin:0;">Sem cabo velho no meio do caminho: sinal firme do poste à sua sala.</p>
             </div>
             <div class="mut-card-hover" style="background:var(--surface); border:1px solid var(--border); border-radius:22px; padding:28px; box-shadow:var(--shadow-sm); transition:transform .2s, box-shadow .2s;">
-              <div style="width:50px; height:50px; border-radius:14px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:18px;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5C5 6 9 4.5 12 4.5s7 1.5 10 4M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1.2" fill="currentColor"/></svg></div>
+              <div style="width:50px; height:50px; border-radius:14px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:18px;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5C5 6 9 4.5 12 4.5s7 1.5 10 4M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1.2" fill="currentColor"/></svg></div>
               <h3 style="font-family:'Archivo',sans-serif; font-weight:700; font-size:18px; margin:0 0 8px;">Wi-Fi que alcança a casa toda</h3>
               <p style="font-size:14.5px; line-height:1.5; color:var(--muted); margin:0;">Roteador moderno incluso e configurado na instalação.</p>
             </div>
             <div class="mut-card-hover" style="background:var(--surface); border:1px solid var(--border); border-radius:22px; padding:28px; box-shadow:var(--shadow-sm); transition:transform .2s, box-shadow .2s;">
-              <div style="width:50px; height:50px; border-radius:14px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:18px;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
+              <div style="width:50px; height:50px; border-radius:14px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:18px;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
               <h3 style="font-family:'Archivo',sans-serif; font-weight:700; font-size:18px; margin:0 0 8px;">Instalado em até 48h</h3>
               <p style="font-size:14.5px; line-height:1.5; color:var(--muted); margin:0;">Nossa equipe é daqui, então a visita não demora.</p>
             </div>
             <div class="mut-card-hover" style="background:var(--surface); border:1px solid var(--border); border-radius:22px; padding:28px; box-shadow:var(--shadow-sm); transition:transform .2s, box-shadow .2s;">
-              <div style="width:50px; height:50px; border-radius:14px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:18px;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-7h1a2 2 0 0 1 2 2zM3 19a2 2 0 0 0 2 2h1v-7H5a2 2 0 0 0-2 2z"/></svg></div>
+              <div style="width:50px; height:50px; border-radius:14px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:18px;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-7h1a2 2 0 0 1 2 2zM3 19a2 2 0 0 0 2 2h1v-7H5a2 2 0 0 0-2 2z"/></svg></div>
               <h3 style="font-family:'Archivo',sans-serif; font-weight:700; font-size:18px; margin:0 0 8px;">Atendimento com gente de verdade</h3>
               <p style="font-size:14.5px; line-height:1.5; color:var(--muted); margin:0;">Fala com quem mora na região, sem menu automático.</p>
             </div>
             <div class="mut-card-hover" style="background:var(--surface); border:1px solid var(--border); border-radius:22px; padding:28px; box-shadow:var(--shadow-sm); transition:transform .2s, box-shadow .2s;">
-              <div style="width:50px; height:50px; border-radius:14px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:18px;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <div style="width:50px; height:50px; border-radius:14px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:18px;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
               <h3 style="font-family:'Archivo',sans-serif; font-weight:700; font-size:18px; margin:0 0 8px;">A conta que você combinou</h3>
               <p style="font-size:14.5px; line-height:1.5; color:var(--muted); margin:0;">Preço fixo, sem taxa escondida na fatura.</p>
             </div>
             <div class="mut-card-hover" style="background:var(--surface); border:1px solid var(--border); border-radius:22px; padding:28px; box-shadow:var(--shadow-sm); transition:transform .2s, box-shadow .2s;">
-              <div style="width:50px; height:50px; border-radius:14px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:18px;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
+              <div style="width:50px; height:50px; border-radius:14px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:18px;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
               <h3 style="font-family:'Archivo',sans-serif; font-weight:700; font-size:18px; margin:0 0 8px;">Resolva pelo celular</h3>
               <p style="font-size:14.5px; line-height:1.5; color:var(--muted); margin:0;">2ª via, suporte e upgrade de plano no seu aparelho.</p>
             </div>
@@ -141,10 +141,10 @@ require __DIR__ . '/includes/header.php';
             <p style="font-size:16px; color:var(--muted); margin:0;">Todos os planos com Wi-Fi incluso, instalação gratuita e suporte local.</p>
           </div>
 <?php mut_render_plan_toggle('var(--background)'); ?>
-          <div class="mut-plan-group grid-4 is-visible" data-plan-group="residencial" style="grid-template-columns:repeat(4,1fr); gap:20px; align-items:stretch;">
+          <div id="mut-plan-panel-residencial" role="tabpanel" aria-labelledby="mut-plan-tab-residencial" class="mut-plan-group grid-4 is-visible" data-plan-group="residencial" style="grid-template-columns:repeat(4,1fr); gap:20px; align-items:stretch;">
 <?php foreach ($residentialPlans as $plan) mut_render_plan_card($plan); ?>
           </div>
-          <div class="mut-plan-group grid-3" data-plan-group="empresarial" style="grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch;">
+          <div id="mut-plan-panel-empresarial" role="tabpanel" aria-labelledby="mut-plan-tab-empresarial" class="mut-plan-group grid-3" data-plan-group="empresarial" style="grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch;">
 <?php foreach ($businessPlans as $plan) mut_render_plan_card($plan); ?>
           </div>
           <p style="text-align:center; font-size:13px; color:var(--muted); margin-top:26px;">Valores e velocidades são placeholders — substituir pelos planos reais. Consulte condições e disponibilidade por endereço.</p>
@@ -175,7 +175,7 @@ require __DIR__ . '/includes/header.php';
           <div class="grid-4" style="display:grid; grid-template-columns:repeat(4,1fr); gap:18px;">
 <?php foreach ($cidades as $c): ?>
             <div style="background:var(--background); border-radius:22px; padding:28px 22px; text-align:center;">
-              <div style="width:46px; height:46px; margin:0 auto 16px; border-radius:12px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+              <div style="width:46px; height:46px; margin:0 auto 16px; border-radius:12px; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
               <div style="font-weight:700; font-size:18px; font-family:'Archivo',sans-serif; color:var(--foreground);"><?= e($c) ?></div>
               <div style="font-size:13px; color:var(--muted); margin:6px 0 18px;">[X] bairros atendidos</div>
               <a href="cobertura.php" style="padding:10px 18px; border-radius:10px; font-weight:600; font-size:13.5px; color:var(--primary); background:var(--soft); border:none; cursor:pointer; width:100%; text-decoration:none; display:block; text-align:center;">Ver cobertura</a>
@@ -208,18 +208,18 @@ require __DIR__ . '/includes/header.php';
             <div style="font-size:14px; font-weight:700; color:var(--accent); letter-spacing:.5px; text-transform:uppercase; margin-bottom:12px;">Depoimentos</div>
             <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:40px; letter-spacing:-1.2px; margin:0;">Quem é MUT, recomenda</h2>
           </div>
-          <div class="grid-3" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+          <div class="grid-3" role="list" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
 <?php foreach ($depoimentos as $d): ?>
-            <div style="background:var(--background); border:1px solid var(--border); border-radius:22px; padding:28px; box-shadow:var(--shadow-sm);">
-              <div style="display:flex; gap:3px; margin-bottom:16px;">
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="#f5a623" stroke="none"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" width="17" height="17" fill="#f5a623"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" width="17" height="17" fill="#f5a623"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" width="17" height="17" fill="#f5a623"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" width="17" height="17" fill="#f5a623"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <figure role="listitem" style="background:var(--background); border:1px solid var(--border); border-radius:22px; padding:28px; box-shadow:var(--shadow-sm); margin:0;">
+              <div role="img" aria-label="Avaliação 5 de 5 estrelas" style="display:flex; gap:3px; margin-bottom:16px;">
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="17" height="17" fill="#f5a623" stroke="none"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="17" height="17" fill="#f5a623"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="17" height="17" fill="#f5a623"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="17" height="17" fill="#f5a623"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="17" height="17" fill="#f5a623"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
               </div>
-              <p style="font-size:15.5px; line-height:1.6; margin:0 0 22px; color:var(--foreground);">"<?= e($d['texto']) ?>"</p>
-              <div style="display:flex; align-items:center; gap:13px;">
-                <div style="width:46px; height:46px; border-radius:50%; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-family:'Archivo',sans-serif; font-weight:700; font-size:17px;"><?= e($d['inicial']) ?></div>
+              <blockquote style="font-size:15.5px; line-height:1.6; margin:0 0 22px; color:var(--foreground);">"<?= e($d['texto']) ?>"</blockquote>
+              <figcaption style="display:flex; align-items:center; gap:13px;">
+                <div aria-hidden="true" style="width:46px; height:46px; border-radius:50%; background:var(--soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-family:'Archivo',sans-serif; font-weight:700; font-size:17px;"><?= e($d['inicial']) ?></div>
                 <div><div style="font-weight:700; font-size:14.5px;"><?= e($d['nome']) ?></div><div style="font-size:13px; color:var(--muted);"><?= e($d['cidade']) ?></div></div>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
 <?php endforeach; ?>
           </div>
         </div>
@@ -234,7 +234,7 @@ require __DIR__ . '/includes/header.php';
               <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:34px; letter-spacing:-1px; margin:0 0 12px;">Soluções de internet para o seu negócio</h2>
               <p style="font-size:16px; line-height:1.55; opacity:.9; margin:0; max-width:480px;">Link dedicado, IP fixo, SLA e suporte prioritário para empresas que não podem ficar offline.</p>
             </div>
-            <div style="position:relative; display:flex; justify-content:flex-start;"><a href="empresas.php" class="mut-lift" style="padding:15px 28px; border-radius:13px; font-weight:700; font-size:15.5px; color:var(--primary); background:#fff; border:none; cursor:pointer; display:inline-flex; align-items:center; gap:9px; transition:transform .18s; text-decoration:none;">Conhecer planos empresariais <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+            <div style="position:relative; display:flex; justify-content:flex-start;"><a href="empresas.php" class="mut-lift" style="padding:15px 28px; border-radius:13px; font-weight:700; font-size:15.5px; color:var(--primary); background:#fff; border:none; cursor:pointer; display:inline-flex; align-items:center; gap:9px; transition:transform .18s; text-decoration:none;">Conhecer planos empresariais <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           </div>
         </div>
       </section>
@@ -246,14 +246,14 @@ require __DIR__ . '/includes/header.php';
             <div style="font-size:14px; font-weight:700; color:var(--accent); letter-spacing:.5px; text-transform:uppercase; margin-bottom:12px;">Dúvidas frequentes</div>
             <h2 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:38px; letter-spacing:-1.2px; margin:0;">Perguntas frequentes</h2>
           </div>
-          <div class="mut-faq-list" style="display:grid; gap:12px;">
-<?php foreach ($faqs as $f): ?>
-            <div class="mut-faq-item" style="background:var(--background); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
-              <button type="button" class="mut-faq-toggle" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 22px; background:transparent; border:none; cursor:pointer; text-align:left; font-family:'Archivo',sans-serif; font-weight:600; font-size:16.5px; color:var(--foreground);">
+          <div class="mut-faq-list" role="list" style="display:grid; gap:12px;">
+<?php foreach ($faqs as $i => $f): ?>
+            <div class="mut-faq-item" role="listitem" style="background:var(--background); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
+              <button type="button" id="mut-faq-btn-home-<?= $i ?>" class="mut-faq-toggle" aria-expanded="false" aria-controls="mut-faq-panel-home-<?= $i ?>" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 22px; background:transparent; border:none; cursor:pointer; text-align:left; font-family:'Archivo',sans-serif; font-weight:600; font-size:16.5px; color:var(--foreground);">
                 <?= e($f['q']) ?>
-                <span class="mut-faq-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+                <span class="mut-faq-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
               </button>
-              <div class="mut-faq-answer" style="padding:0 22px 20px; font-size:15px; line-height:1.6; color:var(--muted);"><?= e($f['a']) ?></div>
+              <div id="mut-faq-panel-home-<?= $i ?>" class="mut-faq-answer" role="region" aria-labelledby="mut-faq-btn-home-<?= $i ?>" style="padding:0 22px 20px; font-size:15px; line-height:1.6; color:var(--muted);"><?= e($f['a']) ?></div>
             </div>
 <?php endforeach; ?>
           </div>

@@ -26,10 +26,22 @@
   /* ---------------- Tema claro/escuro ---------------- */
   function initTheme() {
     var buttons = document.querySelectorAll('#mut-theme-toggle, #mut-theme-toggle-mobile');
+    if (!buttons.length) return;
+
+    var syncButtons = function () {
+      var isDark = document.body.classList.contains('dark');
+      buttons.forEach(function (btn) {
+        btn.setAttribute('aria-pressed', String(isDark));
+        btn.setAttribute('aria-label', isDark ? 'Ativar tema claro' : 'Ativar tema escuro');
+      });
+    };
+
+    syncButtons();
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () {
         var isDark = document.body.classList.toggle('dark');
         try { localStorage.setItem('mut-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+        syncButtons();
       });
     });
   }
@@ -52,8 +64,22 @@
     var closeBtn = document.getElementById('mut-drawer-close');
     if (!drawer || !openBtn) return;
 
-    var open = function () { drawer.classList.remove('hidden'); };
-    var close = function () { drawer.classList.add('hidden'); };
+    var open = function () {
+      drawer.classList.remove('hidden');
+      openBtn.setAttribute('aria-expanded', 'true');
+      // move o foco para dentro do diálogo, como esperado em menus modais
+      if (closeBtn) closeBtn.focus();
+      document.addEventListener('keydown', onKeydown);
+    };
+    var close = function () {
+      drawer.classList.add('hidden');
+      openBtn.setAttribute('aria-expanded', 'false');
+      openBtn.focus();
+      document.removeEventListener('keydown', onKeydown);
+    };
+    var onKeydown = function (e) {
+      if (e.key === 'Escape') close();
+    };
 
     openBtn.addEventListener('click', open);
     if (closeBtn) closeBtn.addEventListener('click', close);
@@ -89,8 +115,15 @@
         if (!btn) return;
         btn.addEventListener('click', function () {
           var willOpen = !item.classList.contains('is-open');
-          items.forEach(function (i) { i.classList.remove('is-open'); });
-          if (willOpen) item.classList.add('is-open');
+          items.forEach(function (i) {
+            i.classList.remove('is-open');
+            var b = i.querySelector('.mut-faq-toggle');
+            if (b) b.setAttribute('aria-expanded', 'false');
+          });
+          if (willOpen) {
+            item.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
         });
       });
     });
@@ -105,7 +138,12 @@
     pills.forEach(function (pill) {
       pill.addEventListener('click', function () {
         var type = pill.getAttribute('data-plan-type');
-        pills.forEach(function (p) { p.classList.toggle('is-active', p === pill); });
+        pills.forEach(function (p) {
+          var active = p === pill;
+          p.classList.toggle('is-active', active);
+          p.setAttribute('aria-selected', String(active));
+          p.setAttribute('tabindex', active ? '0' : '-1');
+        });
         groups.forEach(function (g) {
           g.classList.toggle('is-visible', g.getAttribute('data-plan-group') === type);
         });
@@ -133,6 +171,7 @@
       resultNo.classList.add('hidden');
       spinner.classList.remove('hidden');
       button.disabled = true;
+      button.setAttribute('aria-busy', 'true');
 
       setTimeout(function () {
         var low = value.toLowerCase();
@@ -140,6 +179,7 @@
         var ok = cities.some(function (c) { return low.indexOf(c) !== -1; }) || /^57\d{3}/.test(cep);
         spinner.classList.add('hidden');
         button.disabled = false;
+        button.setAttribute('aria-busy', 'false');
         (ok ? resultYes : resultNo).classList.remove('hidden');
       }, 850);
     });
@@ -166,15 +206,23 @@
       if (!fields.cidade.value) errors.cidade = 'Selecione sua cidade.';
       if (fields.mensagem.value.trim().length < 5) errors.mensagem = 'Escreva uma mensagem.';
 
+      var firstInvalid = null;
       Object.keys(fields).forEach(function (key) {
         var errEl = document.getElementById('mut-err-' + key);
         if (errEl) {
           errEl.textContent = errors[key] || '';
           errEl.classList.toggle('hidden', !errors[key]);
         }
+        if (fields[key]) {
+          fields[key].setAttribute('aria-invalid', String(!!errors[key]));
+          if (errors[key] && !firstInvalid) firstInvalid = fields[key];
+        }
       });
 
-      if (Object.keys(errors).length) return;
+      if (Object.keys(errors).length) {
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
 
       form.classList.add('hidden');
       if (successBlock) successBlock.classList.remove('hidden');
@@ -195,10 +243,13 @@
       var digits = (input.value || '').replace(/\D/g, '');
       errorEl.classList.add('hidden');
       errorEl.textContent = '';
+      input.removeAttribute('aria-invalid');
 
       if (digits.length !== 11 && digits.length !== 14) {
         errorEl.textContent = 'Digite um CPF (11 dígitos) ou CNPJ (14 dígitos) válido.';
         errorEl.classList.remove('hidden');
+        input.setAttribute('aria-invalid', 'true');
+        input.focus();
         if (resultBlock) resultBlock.classList.add('hidden');
         return;
       }
@@ -246,23 +297,38 @@
     if (form) {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var cpf = form.querySelector('[name="cpf"]').value.trim();
-        var senha = form.querySelector('[name="senha"]').value.trim();
+        var cpfField = form.querySelector('[name="cpf"]');
+        var senhaField = form.querySelector('[name="senha"]');
+        var cpf = cpfField.value.trim();
+        var senha = senhaField.value.trim();
         if (!cpf || !senha) {
           errorEl.textContent = 'Preencha CPF e senha.';
           errorEl.classList.remove('hidden');
+          cpfField.setAttribute('aria-invalid', String(!cpf));
+          senhaField.setAttribute('aria-invalid', String(!senha));
+          (!cpf ? cpfField : senhaField).focus();
           return;
         }
+        cpfField.removeAttribute('aria-invalid');
+        senhaField.removeAttribute('aria-invalid');
         errorEl.classList.add('hidden');
         if (loggedOutView) loggedOutView.classList.add('hidden');
-        if (loggedInView) loggedInView.classList.remove('hidden');
+        if (loggedInView) {
+          loggedInView.classList.remove('hidden');
+          var heading = loggedInView.querySelector('h1');
+          if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus(); }
+        }
       });
     }
 
     if (logoutBtn) {
       logoutBtn.addEventListener('click', function () {
         if (loggedInView) loggedInView.classList.add('hidden');
-        if (loggedOutView) loggedOutView.classList.remove('hidden');
+        if (loggedOutView) {
+          loggedOutView.classList.remove('hidden');
+          var cpfField = form && form.querySelector('[name="cpf"]');
+          if (cpfField) cpfField.focus();
+        }
         if (form) form.reset();
       });
     }
@@ -283,24 +349,34 @@
       var email = emailInput.value.trim();
       var endereco = enderecoInput.value.trim();
       var hasError = false;
+      var firstInvalid = null;
 
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         errEmail.textContent = 'Digite um e-mail válido.';
         errEmail.classList.remove('hidden');
+        emailInput.setAttribute('aria-invalid', 'true');
         hasError = true;
+        firstInvalid = emailInput;
       } else {
         errEmail.classList.add('hidden');
+        emailInput.removeAttribute('aria-invalid');
       }
 
       if (endereco.length < 8) {
         errEndereco.textContent = 'Informe o endereço completo.';
         errEndereco.classList.remove('hidden');
+        enderecoInput.setAttribute('aria-invalid', 'true');
         hasError = true;
+        if (!firstInvalid) firstInvalid = enderecoInput;
       } else {
         errEndereco.classList.add('hidden');
+        enderecoInput.removeAttribute('aria-invalid');
       }
 
-      if (hasError) return;
+      if (hasError) {
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
 
       form.classList.add('hidden');
       if (successBlock) successBlock.classList.remove('hidden');

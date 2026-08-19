@@ -134,7 +134,7 @@ function mut_faturas_mock(): array
  */
 function mut_icon_whatsapp(int $size = 18): string
 {
-    return '<svg viewBox="0 0 24 24" width="' . $size . '" height="' . $size . '" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-6c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1 1.9-.6 3.1.5 1.5 1.5 2.8 2.7 3.8 1.9 1.6 3.5 2 4.5 1.8.7-.1 1.5-.7 1.7-1.3.2-.5.2-1 .1-1.1l-.6-.3z"/></svg>';
+    return '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="' . $size . '" height="' . $size . '" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-6c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1 1.9-.6 3.1.5 1.5 1.5 2.8 2.7 3.8 1.9 1.6 3.5 2 4.5 1.8.7-.1 1.5-.7 1.7-1.3.2-.5.2-1 .1-1.1l-.6-.3z"/></svg>';
 }
 
 /**
@@ -163,10 +163,10 @@ function mut_render_plan_card(array $plan): void
               <div style="display:flex; align-items:baseline; gap:3px; margin-top:14px; padding-bottom:18px; border-bottom:1px solid var(--border);"><span style="font-size:15px; color:var(--muted);">R$</span><span style="font-family:'Archivo',sans-serif; font-weight:800; font-size:30px;"><?= e($plan['preco']) ?></span><span style="font-size:14px; color:var(--muted);">/mês</span></div>
               <div style="display:grid; gap:11px; margin:20px 0 22px;">
 <?php foreach ($plan['features'] as $feat): ?>
-                <div style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--foreground);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M20 6L9 17l-5-5"/></svg><?= e($feat) ?></div>
+                <div style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--foreground);"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M20 6L9 17l-5-5"/></svg><?= e($feat) ?></div>
 <?php endforeach; ?>
 <?php if ($plan['combos']): ?>
-                <div style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--accent); font-weight:600;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 3v18l7-5 7 5V3z"/></svg>Combos de streaming</div>
+                <div style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--accent); font-weight:600;"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 3v18l7-5 7 5V3z"/></svg>Combos de streaming</div>
 <?php endif; ?>
               </div>
               <a href="<?= e($plan['wa']) ?>" target="_blank" rel="noopener" class="mut-lift" style="margin-top:auto; text-align:center; padding:13px; border-radius:12px; font-weight:700; font-size:14.5px; color:var(--accent-fg); background:var(--accent); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:transform .18s; text-decoration:none;"><?= mut_icon_whatsapp(17) ?>Assinar agora</a>
@@ -182,9 +182,9 @@ function mut_render_plan_toggle(string $wrapperBg = 'var(--background)'): void
 {
     ?>
           <div style="display:flex; justify-content:center; margin-bottom:44px;">
-            <div style="display:inline-flex; background:<?= e($wrapperBg) ?>; border:1px solid var(--border); border-radius:13px; padding:5px; gap:4px;">
-              <button type="button" class="mut-plan-pill is-active" data-plan-type="residencial">Residencial</button>
-              <button type="button" class="mut-plan-pill" data-plan-type="empresarial">Empresarial</button>
+            <div role="tablist" aria-label="Tipo de plano" style="display:inline-flex; background:<?= e($wrapperBg) ?>; border:1px solid var(--border); border-radius:13px; padding:5px; gap:4px;">
+              <button type="button" id="mut-plan-tab-residencial" role="tab" aria-selected="true" aria-controls="mut-plan-panel-residencial" class="mut-plan-pill is-active" data-plan-type="residencial">Residencial</button>
+              <button type="button" id="mut-plan-tab-empresarial" role="tab" aria-selected="false" aria-controls="mut-plan-panel-empresarial" class="mut-plan-pill" data-plan-type="empresarial">Empresarial</button>
             </div>
           </div>
 <?php

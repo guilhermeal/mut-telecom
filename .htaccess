@@ -8,6 +8,12 @@ Options -Indexes
     Require all denied
 </FilesMatch>
 
+# Documentação do repositório (README, CHANGELOG, instruções de projeto) não é
+# conteúdo do site — nunca deve ser servida por HTTP.
+<FilesMatch "\.md$">
+    Require all denied
+</FilesMatch>
+
 RewriteEngine On
 
 # /index ou /index.php -> raiz (evita URL duplicada para a home)

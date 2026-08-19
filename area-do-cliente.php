@@ -39,7 +39,7 @@ require __DIR__ . '/includes/header.php';
             <button type="button" id="mut-logout" class="mut-outline-hover mut-card-23">Sair</button>
           </div>
           <div class="grid-3 mut-grid-17">
-            <div class="mut-misc-28"><div class="mut-eyebrow-2">Plano atual</div><div class="mut-heading-30-5">MUT 500 Mega</div><div class="mut-misc-44">R$ 99,90/mês · próxima fatura 10/06/2026</div></div>
+            <div class="mut-misc-28"><div class="mut-eyebrow-2">Plano atual</div><div class="mut-heading-30-5">MUT 500 Mega</div><div class="mut-misc-44">R$ 89,90/mês · próxima fatura 10/06/2026</div></div>
             <div class="mut-card"><div class="mut-muted-125">Status da conexão</div><div class="mut-row-14"><span class="mut-misc-94"></span><span class="mut-heading-18-2">Online</span></div><div class="mut-muted-13-2">Sinal estável</div></div>
             <div class="mut-card"><div class="mut-muted-125">Suporte</div><a class="mut-misc-56" href="ajuda.php">Abrir chamado</a></div>
           </div>

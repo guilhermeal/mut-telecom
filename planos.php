@@ -16,25 +16,29 @@ require __DIR__ . '/includes/header.php';
         <div class="mut-container-760">
           <div class="mut-eyebrow">NOSSOS PLANOS</div>
           <h1 class="mut-heading-46">Planos de fibra óptica em Alagoas para todo jeito de usar</h1>
-          <p class="mut-muted-17">Residencial ou empresarial — escolha a velocidade, assine pelo WhatsApp e conecte-se.</p>
+          <p class="mut-muted-17"><?= MUT_BUSINESS_PLANS_ENABLED ? 'Residencial ou empresarial — escolha a velocidade, assine pelo WhatsApp e conecte-se.' : 'Escolha a velocidade e assine pelo WhatsApp.' ?></p>
         </div>
       </section>
       <section class="sec-pad mut-misc-18">
         <div class="mut-container-1240">
+<?php if (MUT_BUSINESS_PLANS_ENABLED): ?>
 <?php mut_render_plan_toggle('on-surface'); ?>
+<?php endif; ?>
           <div id="mut-plan-panel-residencial" role="tabpanel" aria-labelledby="mut-plan-tab-residencial" class="mut-plan-group grid-4 is-visible mut-grid-8" data-plan-group="residencial">
 <?php foreach ($residentialPlans as $plan) mut_render_plan_card($plan); ?>
           </div>
+<?php if (MUT_BUSINESS_PLANS_ENABLED): ?>
           <div id="mut-plan-panel-empresarial" role="tabpanel" aria-labelledby="mut-plan-tab-empresarial" class="mut-plan-group grid-3 mut-grid-7" data-plan-group="empresarial">
 <?php foreach ($businessPlans as $plan) mut_render_plan_card($plan); ?>
           </div>
+<?php endif; ?>
           <!-- comparativo -->
           <div class="mut-card-21">
             <h3 class="mut-heading-22">O que está incluso em todos os planos</h3>
             <div class="grid-4 mut-grid-6">
               <div class="mut-row"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Instalação grátis</div>
-              <div class="mut-row"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Roteador Wi-Fi incluso</div>
-              <div class="mut-row"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Suporte local</div>
+              <div class="mut-row"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Roteador Wi-Fi 6 incluso</div>
+              <div class="mut-row"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Suporte local 24h</div>
               <div class="mut-row"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>App do assinante</div>
             </div>
           </div>

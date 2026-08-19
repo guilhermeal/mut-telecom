@@ -27,6 +27,7 @@ require __DIR__ . '/includes/header.php';
             <div class="mut-card"><div class="mut-iconbox-48"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3 class="mut-misc-4">SLA garantido</h3><p class="mut-muted-135-2">Acordo de nível de serviço com prazos de reparo.</p></div>
             <div class="mut-card"><div class="mut-iconbox-48"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-7h1a2 2 0 0 1 2 2zM3 19a2 2 0 0 0 2 2h1v-7H5a2 2 0 0 0-2 2z"/></svg></div><h3 class="mut-misc-4">Suporte prioritário</h3><p class="mut-muted-135-2">Atendimento dedicado e gerente de conta.</p></div>
           </div>
+<?php if (MUT_BUSINESS_PLANS_ENABLED): ?>
           <h2 class="mut-heading-32-2">Planos empresariais</h2>
           <div class="grid-3 mut-grid-20">
 <?php foreach ($businessPlans as $plan): ?>
@@ -48,6 +49,13 @@ require __DIR__ . '/includes/header.php';
 <?php endforeach; ?>
           </div>
           <p class="mut-muted-13-4">Valores placeholder — proposta personalizada conforme a necessidade da empresa.</p>
+<?php else: ?>
+          <div class="mut-card-25 mut-text-center">
+            <h2 class="mut-heading-32-2">Planos empresariais sob medida</h2>
+            <p class="mut-muted-135-2">Fale com a gente pelo WhatsApp ou pelo formulário de contato e montamos uma proposta de acordo com a necessidade da sua empresa.</p>
+            <a class="mut-btn-5" href="contato.php">Falar com um consultor</a>
+          </div>
+<?php endif; ?>
         </div>
       </section>
 </div>

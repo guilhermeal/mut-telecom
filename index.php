@@ -140,13 +140,17 @@ require __DIR__ . '/includes/header.php';
             <h2 class="mut-heading-40">Escolha a velocidade que a sua casa precisa</h2>
             <p class="mut-muted-16-3">Todos os planos com Wi-Fi incluso, instalação gratuita e suporte local.</p>
           </div>
+<?php if (MUT_BUSINESS_PLANS_ENABLED): ?>
 <?php mut_render_plan_toggle('on-background'); ?>
+<?php endif; ?>
           <div id="mut-plan-panel-residencial" role="tabpanel" aria-labelledby="mut-plan-tab-residencial" class="mut-plan-group grid-4 is-visible mut-grid-8" data-plan-group="residencial">
 <?php foreach ($residentialPlans as $plan) mut_render_plan_card($plan); ?>
           </div>
+<?php if (MUT_BUSINESS_PLANS_ENABLED): ?>
           <div id="mut-plan-panel-empresarial" role="tabpanel" aria-labelledby="mut-plan-tab-empresarial" class="mut-plan-group grid-3 mut-grid-7" data-plan-group="empresarial">
 <?php foreach ($businessPlans as $plan) mut_render_plan_card($plan); ?>
           </div>
+<?php endif; ?>
           <p class="mut-muted-13-5">Valores e velocidades são placeholders — substituir pelos planos reais. Consulte condições e disponibilidade por endereço.</p>
         </div>
       </section>

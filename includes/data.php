@@ -14,9 +14,16 @@ const MUT_WHATSAPP_NUMBER = '5582999999999';
  * rodapé quanto as tags de SEO/JSON-LD/Open Graph em includes/header.php.
  * TODO: substituir por dados reais da empresa quando disponíveis.
  */
+/**
+ * Liga/desliga a exibição dos planos empresariais (toggle Residencial/Empresarial
+ * e a seção de planos em empresas.php) enquanto não há valores reais definidos.
+ * Reverter para true assim que os planos empresariais forem confirmados.
+ */
+const MUT_BUSINESS_PLANS_ENABLED = false;
+
 const MUT_SITE_URL = 'https://www.muttelecom.com.br';
-const MUT_PHONE_DISPLAY = '(82) 3000-0000';
-const MUT_PHONE_E164 = '+55 82 3000-0000';
+const MUT_PHONE_DISPLAY = '0800 042 0055';
+const MUT_PHONE_TEL = '08000420055';
 const MUT_EMAIL = 'contato@muttelecom.com.br';
 const MUT_CNPJ = '00.000.000/0001-00';
 
@@ -43,15 +50,17 @@ function mut_whatsapp_plan_link(string $nomePlano): string
  */
 function mut_residential_plans(): array
 {
+    $features = ['Wi-Fi 6 incluso', 'Roteador incluso', 'Instalação grátis', 'Suporte local 24h', 'App de canais, filmes e séries'];
+
     return [
-        ['nome' => 'MUT 300', 'vel' => '300', 'unit' => 'Mega', 'preco' => '79,90', 'destaque' => false, 'combos' => false,
-            'features' => ['Wi-Fi 5 incluso', 'Instalação grátis', 'Suporte local 24h', 'Sem fidelidade']],
-        ['nome' => 'MUT 500', 'vel' => '500', 'unit' => 'Mega', 'preco' => '99,90', 'destaque' => true, 'combos' => true,
-            'features' => ['Wi-Fi 6 incluso', 'Instalação grátis', 'Suporte local 24h', 'App do assinante']],
-        ['nome' => 'MUT 700', 'vel' => '700', 'unit' => 'Mega', 'preco' => '119,90', 'destaque' => false, 'combos' => true,
-            'features' => ['Wi-Fi 6 incluso', 'Instalação grátis', 'Suporte prioritário', 'App do assinante']],
-        ['nome' => 'MUT GIGA', 'vel' => '1', 'unit' => 'Giga', 'preco' => '149,90', 'destaque' => false, 'combos' => false,
-            'features' => ['Wi-Fi 6 mesh', 'Instalação grátis', 'Suporte VIP', 'IP dinâmico']],
+        ['nome' => 'MUT 240', 'vel' => '240', 'unit' => 'Mega', 'precoOriginal' => '74,90', 'preco' => '69,90', 'destaque' => false, 'combos' => false,
+            'features' => $features],
+        ['nome' => 'MUT 320', 'vel' => '320', 'unit' => 'Mega', 'precoOriginal' => '84,90', 'preco' => '79,90', 'destaque' => false, 'combos' => false,
+            'features' => $features],
+        ['nome' => 'MUT 500', 'vel' => '500', 'unit' => 'Mega', 'precoOriginal' => '94,90', 'preco' => '89,90', 'destaque' => true, 'combos' => false,
+            'features' => $features],
+        ['nome' => 'MUT 700', 'vel' => '700', 'unit' => 'Mega', 'precoOriginal' => '104,90', 'preco' => '99,90', 'destaque' => false, 'combos' => false,
+            'features' => $features],
     ];
 }
 
@@ -135,9 +144,9 @@ function mut_partners(): array
 function mut_faturas_mock(): array
 {
     return [
-        ['venc' => '10/06/2026', 'valor' => 'R$ 99,90', 'status' => 'Em aberto', 'statusClasse' => 'aberto'],
-        ['venc' => '10/05/2026', 'valor' => 'R$ 99,90', 'status' => 'Pago', 'statusClasse' => 'pago'],
-        ['venc' => '10/04/2026', 'valor' => 'R$ 99,90', 'status' => 'Pago', 'statusClasse' => 'pago'],
+        ['venc' => '10/06/2026', 'valor' => 'R$ 89,90', 'status' => 'Em aberto', 'statusClasse' => 'aberto'],
+        ['venc' => '10/05/2026', 'valor' => 'R$ 89,90', 'status' => 'Pago', 'statusClasse' => 'pago'],
+        ['venc' => '10/04/2026', 'valor' => 'R$ 89,90', 'status' => 'Pago', 'statusClasse' => 'pago'],
     ];
 }
 
@@ -164,7 +173,7 @@ function mut_local_business_jsonld(): array
         'name' => 'MUT Telecom',
         'image' => MUT_SITE_URL . '/assets/og-image.jpg',
         'description' => 'Internet de fibra óptica em Murici, Messias, Rio Largo e Branquinha, com atendimento local e suporte de verdade.',
-        'telephone' => MUT_PHONE_E164,
+        'telephone' => MUT_PHONE_DISPLAY,
         'email' => MUT_EMAIL,
         'url' => MUT_SITE_URL,
         'areaServed' => mut_cidades(),
@@ -202,7 +211,15 @@ function mut_render_plan_card(array $plan): void
 <?php endif; ?>
               <div class="mut-muted-16"><?= e($plan['nome']) ?></div>
               <div class="mut-row-4"><span class="mut-heading-46-3"><?= e($plan['vel']) ?></span><span class="mut-misc-50"><?= e($plan['unit']) ?></span></div>
-              <div class="mut-row-3"><span class="mut-muted-15-2">R$</span><span class="mut-heading-30"><?= e($plan['preco']) ?></span><span class="mut-muted-14-2">/mês</span></div>
+              <div class="mut-plan-price-block">
+<?php if (!empty($plan['precoOriginal'])): ?>
+                <div class="mut-plan-original-price">De R$ <?= e($plan['precoOriginal']) ?>/mês</div>
+<?php endif; ?>
+                <div class="mut-plan-price-row"><span class="mut-muted-15-2">R$</span><span class="mut-heading-30"><?= e($plan['preco']) ?></span><span class="mut-muted-14-2">/mês</span></div>
+<?php if (!empty($plan['precoOriginal'])): ?>
+                <div class="mut-plan-discount-note">com desconto pontualidade</div>
+<?php endif; ?>
+              </div>
               <div class="mut-grid-3">
 <?php foreach ($plan['features'] as $feat): ?>
                 <div class="mut-row-13"><svg class="mut-misc-15" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><?= e($feat) ?></div>

@@ -9,7 +9,7 @@ $faturas = mut_faturas_mock();
 
 require __DIR__ . '/includes/header.php';
 ?>
-<div data-screen-label="Area do cliente">
+<div>
       <section id="mut-logged-out" style="padding:72px 0; min-height:60vh; display:flex; align-items:center;">
         <div style="max-width:440px; margin:0 auto; padding:0 24px; width:100%;">
           <div style="text-align:center; margin-bottom:28px;">

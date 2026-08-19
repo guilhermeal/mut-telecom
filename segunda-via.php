@@ -9,7 +9,7 @@ $boletos = mut_faturas_mock();
 
 require __DIR__ . '/includes/header.php';
 ?>
-<div data-screen-label="Segunda via">
+<div>
       <section style="padding:64px 0 36px; background:var(--surface); border-bottom:1px solid var(--border); text-align:center;">
         <div style="max-width:680px; margin:0 auto; padding:0 24px;">
           <div style="font-size:14px; font-weight:700; color:var(--accent); letter-spacing:.5px; text-transform:uppercase; margin-bottom:12px;">Financeiro</div>

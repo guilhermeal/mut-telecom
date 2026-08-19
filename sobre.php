@@ -7,7 +7,7 @@ $pageDescription = 'A MUT Telecom nasceu para levar internet de fibra óptica de
 
 require __DIR__ . '/includes/header.php';
 ?>
-<div data-screen-label="Sobre">
+<div>
       <section style="padding:64px 0 36px; background:var(--surface); border-bottom:1px solid var(--border);">
         <div style="max-width:820px; margin:0 auto; padding:0 24px;">
           <div style="font-size:14px; font-weight:700; color:var(--accent); letter-spacing:.5px; text-transform:uppercase; margin-bottom:12px;">Sobre a MUT</div>

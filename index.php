@@ -14,7 +14,7 @@ $partners = mut_partners();
 
 require __DIR__ . '/includes/header.php';
 ?>
-<div data-screen-label="Home">
+<div>
 
 <!-- HERO -->
       <section style="position:relative; overflow:hidden; border-bottom:1px solid var(--border); background-image:url('assets/hero-mut.png'); background-size:cover; background-position:center 30%; min-height:680px; display:flex; align-items:center;">

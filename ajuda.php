@@ -9,7 +9,7 @@ $faqs = mut_faqs();
 
 require __DIR__ . '/includes/header.php';
 ?>
-<div data-screen-label="Ajuda">
+<div>
       <section style="padding:64px 0 48px; background:linear-gradient(135deg, var(--primary), #062f6e); color:#fff; text-align:center;">
         <div style="max-width:720px; margin:0 auto; padding:0 24px;">
           <h1 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:44px; letter-spacing:-1.6px; margin:0 0 22px;">Como podemos ajudar?</h1>

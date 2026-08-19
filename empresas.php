@@ -9,7 +9,7 @@ $businessPlans = mut_plans_with_links(mut_business_plans());
 
 require __DIR__ . '/includes/header.php';
 ?>
-<div data-screen-label="Empresas">
+<div>
       <section style="position:relative; overflow:hidden; background:linear-gradient(135deg, var(--primary), #062f6e); color:#fff; padding:80px 0;">
         <div style="position:absolute; top:-60px; right:-40px; width:280px; height:280px; border-radius:50%; background:rgba(255,255,255,.06);"></div>
         <div style="position:relative; max-width:1240px; margin:0 auto; padding:0 24px; max-width:760px;">

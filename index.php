@@ -47,8 +47,8 @@ require __DIR__ . '/includes/header.php';
       </div>
 
       <!-- VERIFICADOR DE COBERTURA -->
-      <section class="mut-misc-79">
-        <div class="mut-container-760-2">
+      <section class="mut-misc-79" style="display:flex; align-items:center; justify-content:center; gap:32px; flex-wrap:wrap;">
+        <div class="mut-container-760-2" style="margin:0;">
           <h2 class="mut-heading-32">Veja se a MUT já chegou na sua rua</h2>
           <p class="mut-misc-46">Digite seu CEP ou cidade e descubra na hora.</p>
           <form class="mut-misc-29" id="mut-coverage-form">
@@ -63,6 +63,7 @@ require __DIR__ . '/includes/header.php';
             <div id="mut-coverage-no" class="hidden mut-misc-57" role="status" aria-live="polite"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>Ainda não chegamos aí — deixe seu contato e avisamos você.</div>
           </form>
         </div>
+        <img src="assets/passaro_MUT.png" alt="Mascote da MUT Telecom, uma arara colorida de camisa azul escrito MUT" style="width: 320px; height:auto; flex-shrink:0; filter:drop-shadow(0 14px 22px rgba(0,0,0,.25));" loading="lazy">
       </section>
 
       <!-- DIFERENCIAIS -->

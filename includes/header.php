@@ -123,6 +123,7 @@ function mut_nav_current(string $file): string
 <?php foreach (mut_main_nav_items() as $navItem): ?>
         <?php mut_render_nav_link($navItem['href'], $navItem['label'], 'mut-nav-link'); ?>
 <?php endforeach; ?>
+        <?php mut_render_quick_links_dropdown(); ?>
       </div>
       <!-- right actions -->
       <div class="nav-desktop mut-row-10">
@@ -150,6 +151,13 @@ function mut_nav_current(string $file): string
       <nav class="mut-row-20" aria-label="Menu mobile">
 <?php foreach (mut_main_nav_items() as $navItem): ?>
         <?php mut_render_nav_link($navItem['href'], $navItem['label'], 'mut-drawer-link'); ?>
+<?php endforeach; ?>
+      </nav>
+      <div class="mut-misc-54" role="separator"></div>
+      <div class="mut-drawer-quick-links-label">Acesso Rápido</div>
+      <nav class="mut-row-20" aria-label="Acesso rápido">
+<?php foreach (mut_quick_links() as $link): ?>
+        <a href="<?= e($link['href']) ?>" class="mut-drawer-link mut-drawer-link--icon" target="_blank" rel="noopener"><?= $link['icon'] ?><?= e($link['label']) ?></a>
 <?php endforeach; ?>
       </nav>
       <div class="mut-misc-54" role="separator"></div>

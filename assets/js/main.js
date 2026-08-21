@@ -11,6 +11,7 @@
     initTheme();
     initHeaderShadow();
     initDrawer();
+    initQuickLinksDropdown();
     initCookieBanner();
     initDevCreditFloat();
     initFaqAccordions();
@@ -86,6 +87,40 @@
     if (closeBtn) closeBtn.addEventListener('click', close);
     drawer.addEventListener('click', function (e) {
       if (e.target === drawer) close();
+    });
+  }
+
+  /* ---------------- Menu suspenso "Acesso Rápido" (navbar desktop) ---------------- */
+  function initQuickLinksDropdown() {
+    var wrap = document.getElementById('mut-quick-links-dropdown');
+    var btn = document.getElementById('mut-quick-links-btn');
+    var menu = document.getElementById('mut-quick-links-menu');
+    if (!wrap || !btn || !menu) return;
+
+    var open = function () {
+      menu.classList.remove('hidden');
+      btn.setAttribute('aria-expanded', 'true');
+      wrap.setAttribute('data-open', 'true');
+      document.addEventListener('click', onClickOutside);
+      document.addEventListener('keydown', onKeydown);
+    };
+    var close = function () {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      wrap.removeAttribute('data-open');
+      document.removeEventListener('click', onClickOutside);
+      document.removeEventListener('keydown', onKeydown);
+    };
+    var onClickOutside = function (e) {
+      if (!wrap.contains(e.target)) close();
+    };
+    var onKeydown = function (e) {
+      if (e.key === 'Escape') { close(); btn.focus(); }
+    };
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (menu.classList.contains('hidden')) open(); else close();
     });
   }
 

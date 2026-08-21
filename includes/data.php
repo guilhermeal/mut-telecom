@@ -7,8 +7,6 @@
 
 declare(strict_types=1);
 
-const MUT_WHATSAPP_NUMBER = '5582999999999';
-
 /**
  * Dados institucionais mockados, centralizados aqui para alimentar tanto o
  * rodapé quanto as tags de SEO/JSON-LD/Open Graph em includes/header.php.
@@ -24,6 +22,7 @@ const MUT_BUSINESS_PLANS_ENABLED = false;
 const MUT_SITE_URL = 'https://www.muttelecom.com.br';
 const MUT_PHONE_DISPLAY = '0800 042 0055';
 const MUT_PHONE_TEL = '08000420055';
+const MUT_PHONE_ZAP = '558000420055';
 const MUT_EMAIL = 'contato@muttelecom.com.br';
 const MUT_CNPJ = '08.375.171/0001-07';
 
@@ -32,7 +31,7 @@ const MUT_CNPJ = '08.375.171/0001-07';
  */
 function mut_whatsapp_link(string $mensagem): string
 {
-    return 'https://wa.me/' . MUT_WHATSAPP_NUMBER . '?text=' . rawurlencode($mensagem);
+    return 'https://wa.me/' . MUT_PHONE_ZAP . '?text=' . rawurlencode($mensagem);
 }
 
 function mut_whatsapp_float_link(): string
@@ -50,7 +49,7 @@ function mut_whatsapp_plan_link(string $nomePlano): string
  */
 function mut_residential_plans(): array
 {
-    $features = ['Wi-Fi 6 incluso', 'Roteador incluso', 'Instalação grátis', 'Suporte local 24h', 'App de canais, filmes e séries'];
+    $features = ['Roteador incluso', 'App de canais', 'App de filmes e séries', '100% fibra óptica', 'Suporte rápido', 'Ultra velocidade', 'Wi-Fi 6'];
 
     return [
         ['nome' => 'MUT 240', 'vel' => '240', 'unit' => 'Mega', 'precoOriginal' => '74,90', 'preco' => '69,90', 'destaque' => false, 'combos' => false,
@@ -174,6 +173,38 @@ function mut_icon_whatsapp(int $size = 18): string
 }
 
 /**
+ * Ícone SVG de rolo de filme, usado no link "Filmes e Séries" do menu Acesso Rápido.
+ */
+function mut_icon_film(int $size = 16): string
+{
+    return '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="' . $size . '" height="' . $size . '" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"/></svg>';
+}
+
+/**
+ * Ícone SVG de TV, usado nos links "TV MUT" do menu Acesso Rápido.
+ */
+function mut_icon_tv(int $size = 16): string
+{
+    return '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="' . $size . '" height="' . $size . '" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M8 2l4 4 4-4"/></svg>';
+}
+
+/**
+ * Ícone SVG de smartphone, usado nos links "App MUT" do menu Acesso Rápido.
+ */
+function mut_icon_smartphone(int $size = 16): string
+{
+    return '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="' . $size . '" height="' . $size . '" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>';
+}
+
+/**
+ * Ícone SVG do Instagram (mesmo traçado usado no rodapé).
+ */
+function mut_icon_instagram(int $size = 16): string
+{
+    return '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="' . $size . '" height="' . $size . '" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
+}
+
+/**
  * Dados estruturados LocalBusiness (schema.org) para o JSON-LD do <head>.
  * Reflete apenas o que já está publicado no rodapé (telefone, e-mail, horário,
  * cidades atendidas) — sem endereço físico ainda (ver TODO em MUT_SITE_URL).
@@ -263,6 +294,48 @@ function mut_main_nav_items(): array
         ['href' => 'sobre', 'label' => 'Sobre'],
         ['href' => 'ajuda', 'label' => 'Ajuda'],
     ];
+}
+
+/**
+ * Links rápidos (canais externos: apps, WhatsApp, redes sociais), espelhando
+ * https://linktr.ee/muttelecom — exibidos no menu suspenso "Acesso Rápido" da
+ * navbar (ver includes/header.php e mut_render_quick_links_dropdown()).
+ *
+ * @return array<int, array{href: string, label: string, icon: string}>
+ */
+function mut_quick_links(): array
+{
+    return [
+        ['href' => mut_whatsapp_float_link(), 'label' => 'WhatsApp', 'icon' => mut_icon_whatsapp(16)],
+        ['href' => 'http://locadora.murici.net/', 'label' => 'Filmes e Séries', 'icon' => mut_icon_film()],
+        ['href' => 'https://play.google.com/store/apps/details?id=br.com.veloo.tv7', 'label' => 'TV MUT — Android', 'icon' => mut_icon_tv()],
+        ['href' => 'https://apps.apple.com/br/app/mais-tv/id1506825469', 'label' => 'TV MUT — iOS', 'icon' => mut_icon_tv()],
+        ['href' => 'https://play.google.com/store/apps/details?id=com.hubsoft_client_app.muricinet', 'label' => 'App MUT — Android', 'icon' => mut_icon_smartphone()],
+        ['href' => 'https://apps.apple.com/us/app/muricinet/id1569076918', 'label' => 'App MUT — iOS', 'icon' => mut_icon_smartphone()],
+        ['href' => 'https://www.instagram.com/muttelecom/', 'label' => 'Instagram', 'icon' => mut_icon_instagram()],
+    ];
+}
+
+/**
+ * Renderiza o menu suspenso "Acesso Rápido" com os canais externos da MUT
+ * (apps, WhatsApp, redes sociais). Usado na navbar desktop; o mesmo conteúdo
+ * é listado inline na drawer mobile.
+ */
+function mut_render_quick_links_dropdown(): void
+{
+    ?>
+        <div class="mut-nav-dropdown" id="mut-quick-links-dropdown">
+          <button type="button" class="mut-nav-link mut-nav-dropdown-btn" id="mut-quick-links-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mut-quick-links-menu">
+            Acesso Rápido
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="mut-nav-dropdown-menu hidden" id="mut-quick-links-menu" role="menu" aria-label="Acesso rápido">
+<?php foreach (mut_quick_links() as $link): ?>
+            <a href="<?= e($link['href']) ?>" class="mut-nav-dropdown-item" role="menuitem" target="_blank" rel="noopener"><?= $link['icon'] ?><?= e($link['label']) ?></a>
+<?php endforeach; ?>
+          </div>
+        </div>
+<?php
 }
 
 /**

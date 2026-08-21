@@ -41,7 +41,7 @@ require __DIR__ . '/includes/header.php';
       <div class="mut-pos-15">
         <div class="grid-3 mut-misc-65">
           <div><div class="mut-heading-26">+[X] mil</div><div class="mut-muted-135">clientes conectados</div></div>
-          <div class="mut-misc-34"><div class="mut-heading-26">[4,8] ★</div><div class="mut-muted-135">nota no Google</div></div>
+          <div class="mut-misc-34"><div class="mut-heading-26">4,7 ★</div><div class="mut-muted-135">nota no Google</div></div>
           <div><div class="mut-heading-26">100%</div><div class="mut-muted-135">fibra óptica</div></div>
         </div>
       </div>

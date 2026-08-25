@@ -66,7 +66,9 @@ require __DIR__ . '/includes/header.php';
             <a href="<?= e(mut_whatsapp_float_link()) ?>" target="_blank" rel="noopener" class="mut-lift mut-card-17"><div class="mut-misc-95"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2z"/></svg></div><div><div class="mut-heading-15">WhatsApp</div><div class="mut-muted-135"><?= e(MUT_PHONE_ZAP) ?></div></div></a>
             <a href="mailto:<?= e(MUT_EMAIL) ?>" class="mut-lift mut-card-8"><div class="mut-iconbox-44-2"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg></div><div><div class="mut-heading-15">E-mail</div><div class="mut-muted-135"><?= e(MUT_EMAIL) ?></div></div></a>
             <div class="mut-card-18"><div class="mut-iconbox-44-2"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><div class="mut-heading-15">Endereço</div><div class="mut-muted-135"><?= e($murici['endereco']) ?> — Murici/AL</div></div></div>
-            <div class="mut-misc-25">mapa do Google (incorporar)</div>
+            <div class="mut-map-embed">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d461.7590638718348!2d-35.943140309918384!3d-9.309889783842676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x706d36e15b43ef9%3A0x3136c076bf74e95c!2sMut%20Telecom!5e0!3m2!1spt-BR!2sbr!4v1787663498499!5m2!1spt-BR!2sbr" title="Localização da MUT Telecom em Murici, AL" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
           </div>
         </div>
       </section>

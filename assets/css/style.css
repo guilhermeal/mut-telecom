@@ -428,7 +428,7 @@ body:not(.dark) .mut-logo-dark { display: none; }
 .mut-row-24 { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; } /* 1x: index */
 .mut-row-25 { display:flex; gap:3px; margin-bottom:16px; } /* 1x: index */
 .mut-row-26 { display:flex; gap:8px; justify-content:flex-end; flex-wrap:wrap; } /* 1x: segunda-via */
-.mut-row-27 { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; } /* 1x: includes/header */
+.mut-row-27 { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-shrink:0; } /* 1x: includes/header */
 
 /* ===== pos (22 classes) ===== */
 .mut-pos { position:absolute; inset:0; border:2px solid var(--accent); border-radius:24px; pointer-events:none; } /* 2x: empresas,includes/data */
@@ -441,7 +441,30 @@ body:not(.dark) .mut-logo-dark { display: none; }
 .mut-pos-8 { position:absolute; top:-8px; right:-7px; } /* 1x: includes/footer */
 .mut-pos-9 { position:absolute; top:-9px; right:-7px; } /* 1x: includes/header */
 .mut-pos-10 { position:absolute; top:-9px; right:-8px; } /* 1x: area-do-cliente */
-.mut-pos-11 { position:absolute; top:0; right:0; height:100%; width:min(82vw,340px); background:var(--background); border-left:1px solid var(--border); padding:22px; display:flex; flex-direction:column; gap:6px; box-shadow:-12px 0 32px rgba(16,42,82,.16); } /* 1x: includes/header */
+.mut-pos-11 { position:absolute; top:0; right:0; height:100%; width:min(82vw,340px); background:var(--background); border-left:1px solid var(--border); padding:22px; display:flex; flex-direction:column; gap:6px; box-shadow:-12px 0 32px rgba(16,42,82,.16); overflow:hidden; } /* 1x: includes/header */
+/* Só a área de navegação (menu principal + Acesso Rápido) rola, e só encolhe
+   (nunca cresce) — fica do tamanho do seu conteúdo por padrão. O grupo final
+   (2ª via / Área do Cliente / Assine já) fica sempre colado logo abaixo dela;
+   o spacer absorve o espaço sobrando *depois* do grupo final, empurrando-o
+   para o rodapé só quando tudo cabe na tela — quando não cabe, o spacer
+   colapsa a 0 e o scroll do menu entra em ação. */
+.mut-drawer-scroll {
+  flex:0 1 auto; min-height:0; overflow-y:auto; -webkit-overflow-scrolling:touch;
+  display:flex; flex-direction:column; gap:6px;
+  /* "Sombra de scroll": um fade no rodapé que só aparece quando há mais
+     conteúdo para rolar abaixo — desaparece sozinho quando o scroll chega ao
+     fim, sem precisar de JS. Técnica: um gradiente de sombra "grudado" no
+     conteúdo (scroll normal) mais um gradiente de cobertura fixo no viewport
+     (attachment local), que só fica visível onde o scroll ainda não
+     "empurrou" a sombra para fora da vista. */
+  background:
+    linear-gradient(rgba(0,0,0,0), var(--background) 80%) local,
+    linear-gradient(rgba(16,42,82,0) 0%, rgba(16,42,82,.25)) scroll;
+  background-repeat:no-repeat;
+  background-size:100% 36px, 100% 22px;
+  background-position:bottom, bottom;
+}
+.mut-drawer-spacer { flex:1 1 auto; min-height:0; }
 .mut-pos-12 { position:fixed; bottom:0; left:0; right:0; z-index:54; padding:16px; } /* 1x: includes/footer */
 .mut-pos-13 { position:fixed; inset:0; z-index:60; background:rgba(8,14,26,.5); backdrop-filter:blur(2px); } /* 1x: includes/header */
 .mut-pos-14 { position:relative; } /* 1x: index */

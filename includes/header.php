@@ -146,26 +146,29 @@ function mut_nav_current(string $file): string
   <div id="mut-drawer" class="hidden mut-pos-13" role="dialog" aria-modal="true" aria-label="Menu de navegação">
     <div class="mut-pos-11">
       <div class="mut-row-27">
-        <img src="assets/MUT_full_logo.png" alt="MUT Telecom" class="mut-logo mut-logo--sm mut-logo-light">
-        <img src="assets/MUT_full_logo_dark.png" alt="MUT Telecom" class="mut-logo mut-logo--sm mut-logo-dark">
+        <img src="assets/MUT_full_logo.png" alt="MUT Telecom" class="mut-logo mut-logo--lg mut-logo-light">
+        <img src="assets/MUT_full_logo_dark.png" alt="MUT Telecom" class="mut-logo mut-logo--lg mut-logo-dark">
         <button class="mut-card-28" type="button" id="mut-drawer-close" aria-label="Fechar menu"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
       </div>
-      <nav class="mut-row-20" aria-label="Menu mobile">
+      <div class="mut-drawer-scroll">
+        <nav class="mut-row-20" aria-label="Menu mobile">
 <?php foreach (mut_main_nav_items() as $navItem): ?>
-        <?php mut_render_nav_link($navItem['href'], $navItem['label'], 'mut-drawer-link'); ?>
+          <?php mut_render_nav_link($navItem['href'], $navItem['label'], 'mut-drawer-link'); ?>
 <?php endforeach; ?>
-      </nav>
-      <div class="mut-misc-54" role="separator"></div>
-      <div class="mut-drawer-quick-links-label">Acesso Rápido</div>
-      <nav class="mut-row-20" aria-label="Acesso rápido">
+        </nav>
+        <div class="mut-misc-54" role="separator"></div>
+        <div class="mut-drawer-quick-links-label">Acesso Rápido</div>
+        <nav class="mut-row-20" aria-label="Acesso rápido">
 <?php foreach (mut_quick_links() as $link): ?>
-        <a href="<?= e($link['href']) ?>" class="mut-drawer-link mut-drawer-link--icon" target="_blank" rel="noopener"><?= $link['icon'] ?><?= e($link['label']) ?></a>
+          <a href="<?= e($link['href']) ?>" class="mut-drawer-link mut-drawer-link--icon" target="_blank" rel="noopener"><?= $link['icon'] ?><?= e($link['label']) ?></a>
 <?php endforeach; ?>
-      </nav>
+        </nav>
+      </div>
       <div class="mut-misc-54" role="separator"></div>
       <a href="segunda-via" class="mut-btn-10"<?= mut_nav_current('segunda-via') ?>>2ª via de boleto</a>
       <a href="area-do-cliente" class="mut-misc-71"<?= mut_nav_current('area-do-cliente') ?>>Área do Cliente</a>
       <a class="mut-btn-4" href="planos">Assine já</a>
+      <div class="mut-drawer-spacer" aria-hidden="true"></div>
     </div>
   </div>
 

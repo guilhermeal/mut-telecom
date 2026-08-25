@@ -216,6 +216,14 @@ function mut_icon_instagram(int $size = 16): string
 }
 
 /**
+ * Ícone SVG do Instagram (mesmo traçado usado no rodapé).
+ */
+function mut_icon_webmail(int $size = 16): string
+{
+    return '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="' . $size . '" height="' . $size . '" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>';
+}
+
+/**
  * Dados estruturados LocalBusiness (schema.org) para o JSON-LD do <head>.
  * Reflete o que já está publicado no rodapé (endereço da sede, telefone,
  * e-mail, horário, cidades atendidas).
@@ -332,6 +340,7 @@ function mut_quick_links(): array
         ['href' => 'https://play.google.com/store/apps/details?id=com.hubsoft_client_app.muricinet', 'label' => 'App MUT — Android', 'icon' => mut_icon_smartphone()],
         ['href' => 'https://apps.apple.com/us/app/muricinet/id1569076918', 'label' => 'App MUT — iOS', 'icon' => mut_icon_smartphone()],
         ['href' => 'https://www.instagram.com/muttelecom/', 'label' => 'Instagram', 'icon' => mut_icon_instagram()],
+        ['href' => 'https://webmail.dreamhost.com/?clearSession=true&_user=@muttelecom.com.br', 'label' => 'Webmail MUT', 'icon' => mut_icon_webmail()],
     ];
 }
 

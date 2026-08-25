@@ -3,6 +3,16 @@
 # Nunca listar o conteúdo de um diretório sem index
 Options -Indexes
 
+# HSTS: instrui o navegador a nunca mais tentar HTTP neste domínio pelo
+# tempo abaixo (1 dia), mesmo que o usuário digite "http://" ou clique num
+# link antigo — evita completamente a primeira requisição insegura em
+# visitas futuras. max-age começa conservador (86400s = 1 dia); depois de
+# confirmar que o HTTPS está estável em produção por um tempo, subir para
+# 31536000 (1 ano) + preload é o recomendado.
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=86400; includeSubDomains"
+</IfModule>
+
 # Bloqueia acesso direto a qualquer arquivo "oculto" (.env, .git, .htaccess etc.)
 <FilesMatch "^\.">
     Require all denied
@@ -20,6 +30,15 @@ RewriteEngine On
 # publicada por engano — o FilesMatch "^\." acima só pega arquivos soltos,
 # não o que está dentro de uma pasta com nome iniciado por ponto.
 RewriteRule ^\.git(/|$) - [F,L]
+
+# Força HTTPS em qualquer acesso HTTP (301, permanente). %{HTTPS} cobre o
+# caso comum (mod_ssl direto); X-Forwarded-Proto cobre hospedagens atrás de
+# proxy/load balancer, onde a conexão com o Apache em si é HTTP mas o cliente
+# usou HTTPS até o proxy — sem essa segunda condição, o site entraria em loop
+# de redirecionamento nesse cenário.
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # /index ou /index.php -> raiz (evita URL duplicada para a home)
 RewriteCond %{THE_REQUEST} \s/(\S*/)?index(\.php)?[?\s] [NC]

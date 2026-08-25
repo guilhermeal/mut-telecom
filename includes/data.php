@@ -115,6 +115,8 @@ function mut_faqs(): array
 }
 
 /**
+ * Depoimentos mockados (placeholder até termos depoimentos reais de clientes).
+ *
  * @return array<int, array{texto: string, nome: string, cidade: string, inicial: string}>
  */
 function mut_depoimentos(): array

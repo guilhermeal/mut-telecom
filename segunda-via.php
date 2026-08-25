@@ -26,7 +26,7 @@ require __DIR__ . '/includes/header.php';
               <button class="mut-btn-12" type="submit"><span id="mut-boleto-spinner" class="hidden mut-misc-24" aria-hidden="true"></span>Consultar boletos</button>
             </div>
             <div id="mut-boleto-error" class="hidden mut-misc-55" role="alert"></div>
-            <div class="mut-muted-12-2">// dados mockados — ponto de integração futura com a API de boletos</div>
+            <!-- dados mockados — ponto de integração futura com a API de boletos -->
           </form>
 
           <div id="mut-boleto-result" class="hidden mut-card-20" role="table" aria-label="Resultado da consulta de boletos" aria-live="polite">
@@ -41,7 +41,7 @@ require __DIR__ . '/includes/header.php';
               <div class="mut-row-26" role="cell">
                 <button type="button" class="mut-boleto-copy mut-card-9" aria-label="Copiar código de barras do boleto de <?= e($b['venc']) ?>" title="Copiar código de barras"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span class="mut-boleto-copy-label" aria-live="polite">Código</span></button>
                 <button type="button" class="mut-boleto-pix mut-card-9" aria-label="Copiar Pix copia e cola do boleto de <?= e($b['venc']) ?>" title="Pix copia e cola">Pix</button>
-                <a href="#" class="mut-noop-link mut-btn-2" aria-label="Baixar PDF do boleto de <?= e($b['venc']) ?>" title="Baixar PDF"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>PDF</a>
+                <a href="#" class="mut-noop-link mut-btn-2" aria-disabled="true" title="Indisponível na demonstração — em breve" aria-label="Baixar PDF do boleto de <?= e($b['venc']) ?> (indisponível na demonstração)"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>PDF</a>
               </div>
             </div>
 <?php endforeach; ?>

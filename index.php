@@ -204,7 +204,7 @@ require __DIR__ . '/includes/header.php';
             <div class="mut-misc-7"><div class="mut-iconbox-58">1</div><h3 class="mut-misc-5">Escolha seu plano</h3><p class="mut-muted-14">Compare as velocidades e ache a ideal.</p></div>
             <div class="mut-misc-7"><div class="mut-iconbox-58">2</div><h3 class="mut-misc-5">Verifique a cobertura</h3><p class="mut-muted-14">Confirme que chegamos no seu endereço.</p></div>
             <div class="mut-misc-7"><div class="mut-iconbox-58">3</div><h3 class="mut-misc-5">Agende a instalação</h3><p class="mut-muted-14">Escolha o melhor dia e horário pra você.</p></div>
-            <div class="mut-misc-7"><div class="mut-iconbox-58-3">4</div><h3 class="mut-misc-5">Conecte-se ao futuro</h3><p class="mut-muted-14">Pronto! É só aproveitar a sua fibra.</p></div>
+            <div class="mut-misc-7"><div class="mut-iconbox-58-3">4</div><h3 class="mut-misc-5">Pronto, é só aproveitar</h3><p class="mut-muted-14">Agora é só usar sua internet.</p></div>
           </div>
         </div>
       </section>
@@ -271,7 +271,7 @@ require __DIR__ . '/includes/header.php';
       <!-- CTA FINAL -->
       <section class="mut-misc-20">
         <div class="mut-container-1240-2">
-          <h2 class="mut-heading-42">Pronto para se conectar ao futuro?</h2>
+          <h2 class="mut-heading-42">Pronto para ter fibra de verdade na sua casa?</h2>
           <p class="mut-muted-17-2">Fibra de verdade, suporte da sua região. Assine em minutos.</p>
           <div class="mut-row-24">
             <a href="planos" class="mut-lift mut-btn-19">Assine já</a>

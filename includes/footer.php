@@ -40,8 +40,7 @@
 
     <div class="mut-misc-66">
       <div class="mut-row-7">
-        <a href="#" aria-label="Instagram da MUT Telecom (abre em nova aba)" target="_blank" rel="noopener" class="mut-social-link mut-card-10"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
-        <a href="#" aria-label="Facebook da MUT Telecom (abre em nova aba)" target="_blank" rel="noopener" class="mut-social-link mut-card-10"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+        <a href="https://www.instagram.com/muttelecom/" aria-label="Instagram da MUT Telecom (abre em nova aba)" target="_blank" rel="noopener" class="mut-social-link mut-card-10"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
       
         <div class="mut-card-19">
           <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>Empresa registrada na Anatel

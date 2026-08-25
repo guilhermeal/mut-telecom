@@ -259,6 +259,7 @@ body:not(.dark) .mut-logo-dark { display: none; }
 /* ===== btn (21 classes) ===== */
 .mut-btn { display:flex; align-items:center; gap:12px; padding:18px; border-radius:14px; background:var(--background); border:1.5px solid var(--border); cursor:pointer; transition:border-color .18s; text-decoration:none; color:inherit; } /* 1x: ajuda */
 .mut-btn-2 { display:inline-flex; align-items:center; gap:6px; padding:8px 12px; border-radius:9px; background:var(--primary); color:#fff; font-size:12.5px; font-weight:600; cursor:pointer; text-decoration:none; } /* 1x: segunda-via */
+.mut-btn-2[aria-disabled="true"] { background:var(--border); color:var(--muted); cursor:not-allowed; opacity:.75; }
 .mut-btn-3 { margin-top:26px; padding:13px 24px; border-radius:12px; font-weight:700; font-size:14.5px; color:#fff; background:var(--primary); border:none; cursor:pointer; text-decoration:none; display:inline-block; } /* 1x: index */
 .mut-btn-4 { margin-top:6px; padding:14px; border-radius:11px; font-weight:700; color:var(--accent-fg); background:var(--accent); border:none; cursor:pointer; text-align:center; text-decoration:none; display:block; } /* 1x: includes/header */
 .mut-btn-5 { margin-top:auto; padding:13px; border-radius:12px; font-weight:700; font-size:14.5px; color:#fff; background:var(--primary); border:none; cursor:pointer; text-decoration:none; text-align:center; display:block; } /* 1x: empresas */

@@ -29,8 +29,8 @@ require __DIR__ . '/includes/header.php';
             <div class="mut-card-5"><div class="mut-iconbox-48-2"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div><h3 class="mut-misc-10">Valores</h3><p class="mut-muted-145-2">Honestidade, respeito, profissionalismo, qualificação e responsabilidade.</p></div>
           </div>
           <div class="mut-misc-60">
-            <h2 class="mut-heading-28-3">Por que somos da sua região</h2>
-            <p class="mut-muted-16-2">Nosso suporte fica aqui, o técnico que instala é seu vizinho e a equipe conhece cada rua das cidades que atende. Quando você liga, fala com gente que entende a sua realidade.</p>
+            <h2 class="mut-heading-28-3">Proximidade que gera agilidade</h2>
+            <p class="mut-muted-16-2">Por estarmos sempre próximos à nossos clientes, conseguimos responder chamados com mais agilidade e acompanhar de perto a qualidade da instalação e do suporte em cada região.</p>
           </div>
         </div>
       </section>

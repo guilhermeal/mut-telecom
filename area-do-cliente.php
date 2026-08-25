@@ -29,7 +29,7 @@ require __DIR__ . '/includes/header.php';
             </div>
             <div id="mut-login-error" class="hidden mut-misc-42" role="alert"></div>
             <button class="mut-btn-15" type="submit">Entrar</button>
-            <div class="mut-muted-12-5">// autenticação mockada — integração futura via API</div>
+            <!-- autenticação mockada — integração futura via API -->
           </form>
         </div>
       </section>
@@ -51,7 +51,7 @@ require __DIR__ . '/includes/header.php';
             <div class="mut-grid-16" role="row"><div class="mut-misc-16" role="cell"><?= e($b['venc']) ?></div><div class="mut-heading-x" role="cell"><?= e($b['valor']) ?></div><div role="cell"><span class="mut-status mut-status--<?= e($b['statusClasse']) ?>"><?= e($b['status']) ?></span></div><div class="mut-misc-13" role="cell"><a href="segunda-via" aria-label="Ver 2ª via da fatura de <?= e($b['venc']) ?>" class="mut-card-24">2ª via</a></div></div>
 <?php endforeach; ?>
           </div>
-          <div class="mut-muted-12-3">// dashboard e faturas mockados — integração futura via API</div>
+          <!-- dashboard e faturas mockados — integração futura via API -->
         </div>
       </section>
 </div>

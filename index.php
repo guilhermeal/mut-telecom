@@ -128,7 +128,10 @@ require __DIR__ . '/includes/header.php';
             <a class="mut-btn-3" href="cobertura">Verificar cobertura completa</a>
           </div>
           <div class="mut-card-16">
-            <img class="mut-misc-23" src="assets/mapa-cobertura.svg" alt="Mapa de cobertura da MUT em Alagoas" loading="lazy">
+            <?php 
+              $_GET["mini-map"] = 1;
+              require __DIR__ . "/includes/mapa-cobertura.php"; 
+            ?>
           </div>
         </div>
       </section>

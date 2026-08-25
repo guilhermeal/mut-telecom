@@ -19,7 +19,7 @@ require __DIR__ . '/includes/header.php';
         <div class="mut-container-1240">
           <div class="mut-card-27">
             <div class="mut-misc-90">
-              <img class="mut-misc-23" src="assets/alagoas-full.svg" alt="Mapa do estado de Alagoas com a área de cobertura da MUT" loading="lazy">
+              <?php require __DIR__ . '/includes/mapa-cobertura.php'; ?>
             </div>
             <div class="mut-muted-12-4">Mapa do estado de Alagoas — regiões atendidas em destaque</div>
           </div>

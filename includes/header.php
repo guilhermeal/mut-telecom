@@ -10,6 +10,7 @@ require_once __DIR__ . '/data.php';
 
 $pageTitle = $pageTitle ?? 'MUT Telecom — Fibra óptica em Alagoas';
 $pageDescription = $pageDescription ?? 'Internet de fibra óptica em Murici, Messias, Rio Largo e Branquinha, com atendimento local e suporte de verdade.';
+$pageKeywords = $pageKeywords ?? 'internet fibra óptica, banda larga, provedor de internet, internet Alagoas, internet Murici, internet Messias, internet Rio Largo, internet Branquinha, MUT Telecom';
 
 /**
  * Página atual sem extensão (ex.: 'planos'), usada para marcar o link ativo do
@@ -37,6 +38,7 @@ function mut_nav_current(string $file): string
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($pageTitle) ?></title>
 <meta name="description" content="<?= e($pageDescription) ?>">
+<meta name="keywords" content="<?= e($pageKeywords) ?>">
 <meta name="geo.region" content="BR-AL">
 <meta name="geo.placename" content="Alagoas">
 <link rel="canonical" href="<?= e($mutCanonicalUrl) ?>">

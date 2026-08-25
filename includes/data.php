@@ -27,6 +27,14 @@ const MUT_EMAIL = 'contato@muttelecom.com.br';
 const MUT_CNPJ = '08.375.171/0001-07';
 
 /**
+ * Endereço da sede (matriz), usado no rodapé (texto real, sinal de SEO local)
+ * e no endereço do JSON-LD LocalBusiness. Os demais endereços por cidade
+ * atendida ficam em mut_office_addresses().
+ */
+const MUT_HQ_ADDRESS = 'Rua Firmino de Queiroz, 101A';
+const MUT_HQ_CITY = 'Murici';
+
+/**
  * Monta um link de WhatsApp com mensagem pré-preenchida.
  */
 function mut_whatsapp_link(string $mensagem): string
@@ -206,8 +214,8 @@ function mut_icon_instagram(int $size = 16): string
 
 /**
  * Dados estruturados LocalBusiness (schema.org) para o JSON-LD do <head>.
- * Reflete apenas o que já está publicado no rodapé (telefone, e-mail, horário,
- * cidades atendidas) — sem endereço físico ainda (ver TODO em MUT_SITE_URL).
+ * Reflete o que já está publicado no rodapé (endereço da sede, telefone,
+ * e-mail, horário, cidades atendidas).
  *
  * @return array<string, mixed>
  */
@@ -222,6 +230,13 @@ function mut_local_business_jsonld(): array
         'telephone' => MUT_PHONE_DISPLAY,
         'email' => MUT_EMAIL,
         'url' => MUT_SITE_URL,
+        'address' => [
+            '@type' => 'PostalAddress',
+            'streetAddress' => MUT_HQ_ADDRESS,
+            'addressLocality' => MUT_HQ_CITY,
+            'addressRegion' => 'AL',
+            'addressCountry' => 'BR',
+        ],
         'areaServed' => mut_cidades(),
         'openingHoursSpecification' => [
             [

@@ -25,6 +25,7 @@
           <div class="mut-row-2"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2z"/></svg><span>WhatsApp: <a href="<?= mut_whatsapp_link("Olá.") ?>" target="_blank" rel="noopener" class="mut-accent-link"><?= e(MUT_PHONE_DISPLAY) ?></a></span></div>
           <div class="mut-row-2"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg><span><a href="mailto:<?= e(MUT_EMAIL) ?>" class="mut-accent-link"><?= e(MUT_EMAIL) ?></a></span></div>
           <div class="mut-row-19"><svg class="mut-misc-59" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg><span>Seg a Sáb, 8h às 20h</span></div>
+          <div class="mut-row-2"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg><address style="font-style: normal; display: inline;"><?= e(MUT_HQ_ADDRESS) ?> — <?= e(MUT_HQ_CITY) ?>, AL</address></div>
         </div>
       </div>
       <div>

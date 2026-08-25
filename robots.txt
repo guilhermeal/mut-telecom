@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /area-do-cliente.php
+Disallow: /segunda-via.php
+
+Sitemap: https://www.muttelecom.com.br/sitemap.xml

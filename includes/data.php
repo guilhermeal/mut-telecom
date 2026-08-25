@@ -33,6 +33,7 @@ const MUT_CNPJ = '08.375.171/0001-07';
  */
 const MUT_HQ_ADDRESS = 'Rua Firmino de Queiroz, 101A';
 const MUT_HQ_CITY = 'Murici';
+const MUT_HQ_POSTAL_CODE = '57820-000';
 
 /**
  * Monta um link de WhatsApp com mensagem pré-preenchida.
@@ -237,6 +238,7 @@ function mut_local_business_jsonld(): array
             'streetAddress' => MUT_HQ_ADDRESS,
             'addressLocality' => MUT_HQ_CITY,
             'addressRegion' => 'AL',
+            'postalCode' => MUT_HQ_POSTAL_CODE,
             'addressCountry' => 'BR',
         ],
         'areaServed' => mut_cidades(),

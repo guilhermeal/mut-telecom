@@ -26,10 +26,16 @@ RewriteCond %{THE_REQUEST} \s/(\S*/)?index(\.php)?[?\s] [NC]
 RewriteRule ^ /%1 [R=301,L]
 
 # Qualquer acesso direto a /pagina.php -> redireciona (301) para /pagina
+# (exceto /api/*, que é sempre chamado com a extensão .php via POST/fetch —
+# redirecionar quebraria o corpo da requisição em alguns clientes/proxies)
 RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.php[?\s] [NC]
+RewriteCond %{REQUEST_URI} !^/api/
 RewriteRule ^ /%1 [R=301,L]
 
-# Resolve internamente /pagina para o arquivo físico pagina.php, sem trocar a URL
+# Resolve internamente /pagina para o arquivo físico pagina.php, sem trocar a URL.
+# Não se aplica quando a URL já é um arquivo .php existente (ex.: /api/contato.php)
+# — nesse caso o Apache já serve o arquivo diretamente, sem precisar de rewrite.
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php [L]

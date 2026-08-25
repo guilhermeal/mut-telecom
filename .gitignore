@@ -10,6 +10,10 @@ Thumbs.db
 # Logs
 *.log
 
-# Ambiente local (se algum dia surgir configuração local sensível)
+# Ambiente local (credenciais reais — nunca commitar; use .env.example como template)
 .env
 .env.local
+
+# Dados de runtime do formulário de contato (rate limiting) — não é código, não vai pro git
+/storage/*
+!/storage/.gitkeep

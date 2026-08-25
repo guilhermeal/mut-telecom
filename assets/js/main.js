@@ -245,6 +245,9 @@
     var form = document.getElementById('mut-contact-form');
     if (!form) return;
     var successBlock = document.getElementById('mut-contact-success');
+    var formError = document.getElementById('mut-contact-form-error');
+    var spinner = document.getElementById('mut-contact-spinner');
+    var submitBtn = form.querySelector('button[type="submit"]');
 
     var fields = {
       nome: form.querySelector('[name="nome"]'),
@@ -279,8 +282,37 @@
         return;
       }
 
-      form.classList.add('hidden');
-      if (successBlock) successBlock.classList.remove('hidden');
+      if (formError) { formError.classList.add('hidden'); formError.textContent = ''; }
+      if (spinner) spinner.classList.remove('hidden');
+      if (submitBtn) submitBtn.disabled = true;
+
+      var payload = new FormData(form);
+
+      fetch('/api/contato.php', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: payload,
+      })
+        .then(function (res) { return res.json().then(function (json) { return { status: res.status, json: json }; }); })
+        .then(function (result) {
+          if (result.status === 200 && result.json && result.json.ok) {
+            form.classList.add('hidden');
+            if (successBlock) successBlock.classList.remove('hidden');
+            return;
+          }
+          var message = (result.json && result.json.message) || 'Não foi possível enviar sua mensagem agora. Tente novamente em instantes ou fale pelo WhatsApp.';
+          if (formError) { formError.textContent = message; formError.classList.remove('hidden'); }
+        })
+        .catch(function () {
+          if (formError) {
+            formError.textContent = 'Falha de conexão. Verifique sua internet e tente novamente, ou fale pelo WhatsApp.';
+            formError.classList.remove('hidden');
+          }
+        })
+        .finally(function () {
+          if (spinner) spinner.classList.add('hidden');
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 

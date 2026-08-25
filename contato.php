@@ -1,12 +1,16 @@
 <?php
 declare(strict_types=1);
 require_once __DIR__ . '/includes/data.php';
+require_once __DIR__ . '/includes/security.php';
 
 $pageTitle = 'Contato — MUT Telecom';
 $pageDescription = 'Fale com a MUT Telecom por WhatsApp, telefone, e-mail ou formulário. Tire dúvidas, peça orçamento ou agende sua instalação.';
 
 /** Endereço físico da unidade de Murici, exibido no card "Endereço". */
 $murici = current(array_filter(mut_office_addresses(), fn (array $end): bool => $end['cidade'] === 'Murici'));
+
+/** Token CSRF do formulário de contato — validado em api/contato.php. */
+$csrfToken = mut_csrf_token();
 
 require __DIR__ . '/includes/header.php';
 ?>
@@ -28,6 +32,12 @@ require __DIR__ . '/includes/header.php';
               <p class="mut-muted-15-3">Recebemos seu contato e retornaremos em breve. Obrigado!</p>
             </div>
             <form class="mut-grid-12" id="mut-contact-form" novalidate>
+              <input type="hidden" name="csrf_token" value="<?= e($csrfToken) ?>">
+              <!-- Honeypot anti-bot: campo invisível para humanos, só bots costumam preenchê-lo. -->
+              <div class="mut-visually-hidden" aria-hidden="true">
+                <label for="mut-contact-empresa">Não preencha este campo</label>
+                <input type="text" id="mut-contact-empresa" name="empresa" tabindex="-1" autocomplete="off">
+              </div>
               <div>
                 <label class="mut-misc" for="mut-contact-nome">Nome completo</label>
                 <input id="mut-contact-nome" name="nome" class="mut-input" placeholder="Seu nome" aria-describedby="mut-err-nome">
@@ -48,6 +58,11 @@ require __DIR__ . '/includes/header.php';
                 </div>
               </div>
               <div>
+                <label class="mut-misc" for="mut-contact-email">E-mail <span class="mut-muted-13-2">(opcional, para retornarmos por e-mail)</span></label>
+                <input id="mut-contact-email" name="email" type="email" class="mut-input" placeholder="seuemail@exemplo.com" aria-describedby="mut-err-email">
+                <div id="mut-err-email" class="hidden mut-misc-2" role="alert"></div>
+              </div>
+              <div>
                 <label class="mut-misc" for="mut-contact-assunto">Assunto</label>
                 <select id="mut-contact-assunto" name="assunto" class="mut-input">
                   <option>Contratar plano</option><option>Suporte técnico</option><option>Financeiro / 2ª via</option><option>Planos empresariais</option><option>Outro assunto</option>
@@ -58,7 +73,8 @@ require __DIR__ . '/includes/header.php';
                 <textarea id="mut-contact-mensagem" name="mensagem" class="mut-input mut-input--textarea" placeholder="Como podemos ajudar?" rows="4" aria-describedby="mut-err-mensagem"></textarea>
                 <div id="mut-err-mensagem" class="hidden mut-misc-2" role="alert"></div>
               </div>
-              <button type="submit" class="mut-lift mut-btn-20">Enviar mensagem</button>
+              <div id="mut-contact-form-error" class="hidden mut-misc-2" role="alert"></div>
+              <button type="submit" class="mut-lift mut-btn-20"><span id="mut-contact-spinner" class="hidden mut-misc-24" aria-hidden="true"></span>Enviar mensagem</button>
             </form>
           </div>
           <!-- contact cards -->

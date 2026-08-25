@@ -1,0 +1,3 @@
+# Código de dependências (PHPMailer via Composer) — não é para ser servido
+# diretamente por HTTP, só incluído pelo PHP do próprio site.
+Require all denied

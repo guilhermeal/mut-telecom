@@ -20,7 +20,10 @@
 /public/storage
 /storage/*.key
 /storage/pail
-/vendor
+# vendor/ é commitado DE PROPÓSITO (diferente do padrão do Laravel): a
+# hospedagem não tem Composer disponível, então não há como rodar
+# `composer install` lá — mesmo padrão já usado no PHPMailer do site PHP
+# puro (ver vendor/ na raiz do repo). Nunca reativar esta linha.
 _ide_helper.php
 Homestead.json
 Homestead.yaml

@@ -25,9 +25,9 @@ plano.
 - [x] **Fase 2** — Service layer (`HubSoftClient`): oAuth de aplicação, cache de token, consulta de faturas
 - [x] **Fase 3** — Endpoint público "2ª via de boleto" (sem login), com anti-enumeração e proteção de Origin
 - [x] **Fase 4** — Área do Cliente (login + sessão + faturas + plano + proxy de PDF) — concluída e validada por completo
-- [~] **Fase 5** — Integração com o frontend PHP puro — código feito, falta validar no navegador (ver "Próximo passo")
-- [ ] **Fase 6** — Hardening final (checklist de produção)
-- [ ] **Deploy real** — nada disso está publicado na hospedagem ainda (só testado local/`mut.local`)
+- [x] **Fase 5** — Integração com o frontend PHP puro — validada pelo usuário em produção (26/08/2026): saudação com nome, próximo vencimento, login completo, botões de copiar código/PIX, tudo confirmado funcionando em `https://muttelecom.com.br`
+- [ ] **Fase 6** — Hardening final (checklist de produção) — retomar aqui na próxima sessão
+- [x] **Deploy real (primeira publicação)** — feito em 26/08/2026, `POST /hub-api/api/boletos/consultar` confirmado funcionando em `https://muttelecom.com.br` (ver "Deploy real — histórico" abaixo)
 
 ## Como rodar localmente
 
@@ -233,29 +233,84 @@ subpasta. Exceção de HTTPS forçado no `.htaccess` raiz do site também
 ganhou `mut.local` na lista. `hub-api-core/.env`: `ORIGENS_PERMITIDAS`
 ganhou `http://mut.local`.
 
-**Pendente antes de fechar a Fase 5**: usuário ainda não validou no
-navegador a saudação com nome real nem o card de próximo vencimento (parou
-a sessão antes de testar). Retomar com `http://mut.local/area-do-cliente`,
-login real, e conferir os dois.
+✅ **FASE 5 CONCLUÍDA E VALIDADA POR COMPLETO** — usuário confirmou em
+produção (`https://muttelecom.com.br`, 26/08/2026): saudação com primeiro
+nome real, card "Próximo vencimento", login completo (form → sessão →
+faturas na tela), botões "Código"/"Pix" copiando corretamente em HTTPS
+real. Fluxo público (2ª via) e autenticado (Área do Cliente) ambos
+funcionando ponta a ponta no ambiente real.
 
-## Próximo passo
+## Deploy real — histórico (26/08/2026)
 
-1. **Fechar a Fase 5**: validar no navegador a saudação/próximo vencimento
-   pendentes acima, e o fluxo completo (2ª via + Área do Cliente) uma vez
-   mais de ponta a ponta.
-2. **Fase 6 (hardening)** — nenhum item feito ainda. Lista mínima:
-   - `APP_DEBUG=false` no `.env` de produção (hoje erros vazam stack trace
-     completo — visto de verdade no teste de rate limit da Fase 3).
-   - Exception handler central que nunca expõe detalhe técnico ao cliente.
-   - `SESSION_SECURE_COOKIE=true` no `.env` de produção (hoje é `false`,
-     correto só porque o teste local é HTTP sem certificado).
-   - `ORIGENS_PERMITIDAS` de produção sem `mut.local`/`localhost`.
-   - Permissões de arquivo: trocar o `chmod 777` usado localmente por algo
-     como `775` + grupo correto do usuário do PHP na hospedagem.
-   - Auditoria de `storage/logs/laravel.log` (garantir que nada sensível
-     foi logado).
-3. **Deploy real na hospedagem** (`/home/dh_sqk6rs/muttelecom.com.br/`) —
-   nada disso foi publicado ainda, só testado localmente/`mut.local`.
-   Comitar o código não é suficiente: `.env` de produção, a estrutura de
-   "ponte" (`hub-api/index.php` + `.htaccess`) e as permissões de arquivo
-   precisam ser recriados manualmente na hospedagem (não vêm do git).
+Primeira publicação em produção (`https://muttelecom.com.br`) tentada e
+resolvida nesta data. Duas causas raiz encontradas, nessa ordem:
+
+1. **`vendor/` ausente na hospedagem → 500 Internal Server Error logo na
+   primeira chamada, sem log nenhum ainda em `storage/logs/`.**
+   `hub-api-core/.gitignore` tinha `/vendor` (padrão gerado pelo
+   `composer create-project`, pensado para projetos que rodam
+   `composer install` no servidor — mas esta hospedagem NÃO tem Composer
+   disponível). Como consequência, `vendor/` nunca foi commitado, e o
+   deploy (git pull) nunca trouxe essa pasta — sem
+   `vendor/autoload.php`, o Laravel nem inicializa.
+   **Corrigido**: removida a linha `/vendor` do `.gitignore`, `vendor/`
+   (92MB, ~8822 arquivos) commitado — mesmo padrão já usado para o
+   PHPMailer do site PHP puro em `/vendor` (raiz do repo). Ver comentário
+   deixado no `.gitignore` para nunca reativar essa exclusão.
+
+2. **PHP da hospedagem (8.2.30) mais antigo que o exigido pelo projeto
+   (`composer.json`: `"php": "^8.3"`) → `Composer detected issues in your
+   platform` ao rodar `php artisan key:generate`.**
+   Editar só o número no `composer.json` NÃO seria suficiente — o código
+   real já instalado em `vendor/` (Laravel e dependências) pode usar
+   sintaxe/recursos exclusivos do PHP 8.3+, então rebaixar a exigência
+   sem trocar o PHP real quebraria de outro jeito.
+   **Corrigido**: a hospedagem oferece múltiplas versões de PHP via
+   painel — trocada a versão do domínio para 8.3+ ali (resolve o
+   Apache/mod_php, que serve as páginas web). Mas o **PHP CLI via SSH
+   continua apontando pro binário antigo** (`php` no PATH = 8.2.30,
+   mesmo depois de trocar no painel) — a hospedagem disponibiliza
+   binários versionados separados em `/usr/local/bin/php-8.3`,
+   `php-8.4`, `php-8.5` etc. Use **`php-8.3`** (não o `php` genérico) para
+   qualquer comando artisan/composer via SSH nesta hospedagem daqui pra
+   frente (`php-8.3 artisan ...`), já que o projeto exige especificamente
+   `^8.3` e não foi testado nem contra 8.4 nem 8.5.
+
+**Resultado confirmado**: `GET /hub-api/ping` → `200 {"ok":true,...}`;
+`POST /hub-api/api/boletos/consultar` (o mesmo endpoint que dava 500) →
+`200`, resposta correta com boleto real do cliente de teste, sem stack
+trace vazando.
+
+**Ainda não verificado no deploy**: se o `.env` de produção já tem
+`SESSION_SECURE_COOKIE=true`/`APP_DEBUG=false`/`ORIGENS_PERMITIDAS`
+correto (ver checklist de Fase 6 abaixo) — o `.env` de produção já
+existia na hospedagem antes desta sessão (não foi criado agora), então
+seu conteúdo real não foi conferido aqui.
+
+## Próximo passo — Fase 6 (hardening), a retomar na próxima sessão
+
+Fases 0–5 concluídas e validadas em produção. Falta só a Fase 6 antes do
+projeto estar 100% fechado. Checklist mínimo, nenhum item confirmado
+ainda (o `.env` de produção já existia antes desta sessão — seu conteúdo
+real nunca foi conferido linha por linha):
+
+1. **Conferir o `.env` de produção de verdade** — item mais urgente, já
+   que o site está no ar:
+   - `APP_DEBUG` deve ser `false` (hoje erros vazam stack trace completo
+     ao visitante — visto de verdade no teste de rate limit da Fase 3;
+     isso é exatamente o tipo de vazamento que o projeto foi pensado pra
+     evitar).
+   - `SESSION_SECURE_COOKIE` deve ser `true` (há HTTPS real em produção).
+   - `ORIGENS_PERMITIDAS` sem `mut.local`/`localhost` (só os domínios
+     reais: `https://muttelecom.com.br`, `https://www.muttelecom.com.br`).
+2. Exception handler central no Laravel que nunca expõe detalhe técnico
+   (stack trace, caminho de arquivo) em nenhuma resposta ao cliente.
+3. Permissões de arquivo na hospedagem: confirmar que `storage/` e
+   `bootstrap/cache/` não estão com `777` (gambiarra só válida
+   localmente) — usar algo como `775` + grupo correto do usuário do PHP.
+4. Auditoria de `storage/logs/laravel.log` na hospedagem — garantir que
+   nenhum CPF, senha, ou dado sensível da HubSoft foi logado por engano.
+5. Revisão final: nenhuma rota sobrando além das documentadas acima,
+   `vendor/`/`.env`/`app/` de fato não acessíveis via HTTP direto (checar
+   com `curl` se `https://muttelecom.com.br/hub-api/.env` ou similar
+   retorna 403/404, nunca o conteúdo do arquivo).

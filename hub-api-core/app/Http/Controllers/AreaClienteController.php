@@ -38,6 +38,25 @@ class AreaClienteController extends Controller
     }
 
     /**
+     * Extrai só o primeiro nome de um nome completo (ex.: "GUILHERME ALLAN
+     * XAVIER DE ALMEIDA" -> "Guilherme"), em Title Case (só a primeira
+     * letra maiúscula) — usado na saudação da tela ("Olá, Guilherme 👋").
+     * A HubSoft retorna o nome sempre em MAIÚSCULAS.
+     */
+    protected function primeiroNome(?string $nomeCompleto): ?string
+    {
+        if (!$nomeCompleto || trim($nomeCompleto) === '') {
+            return null;
+        }
+
+        $primeiraPalavra = explode(' ', trim($nomeCompleto))[0];
+
+        // mb_* para lidar corretamente com acentos (ex.: "ÉLIONE" -> "Élione").
+        return mb_strtoupper(mb_substr($primeiraPalavra, 0, 1), 'UTF-8')
+            . mb_strtolower(mb_substr($primeiraPalavra, 1), 'UTF-8');
+    }
+
+    /**
      * POST /hub-api/cliente/login — valida CPF+senha reais contra a
      * HubSoft. A senha do cliente NUNCA é armazenada em lugar nenhum
      * (nem sessão, nem log, nem cache) — só trafega nesta chamada.
@@ -68,11 +87,19 @@ class AreaClienteController extends Controller
         }
 
         // Guardamos na sessão SÓ o identificador — nunca a senha, nunca o
-        // array cru retornado pela HubSoft (que tem RG, telefone etc).
+        // array cru retornado pela HubSoft (que tem data de nascimento,
+        // telefones etc).
         $request->session()->regenerate(); // novo ID de sessão a cada login (evita session fixation)
         $request->session()->put('cliente_cpf_cnpj', $cpfCnpj);
 
-        return response()->json(['ok' => true, 'message' => 'Login realizado com sucesso.']);
+        return response()->json([
+            'ok' => true,
+            'message' => 'Login realizado com sucesso.',
+            // Só o primeiro nome, para a saudação da tela ("Olá, Fulano").
+            // Nunca o array $cliente inteiro (tem data de nascimento e
+            // telefones do titular).
+            'primeiro_nome' => $this->primeiroNome($cliente['nome_razaosocial'] ?? null),
+        ]);
     }
 
     /**
@@ -164,10 +191,12 @@ class AreaClienteController extends Controller
      * Antes de baixar qualquer coisa: (1) confirma que a fatura pedida
      * pertence de fato ao CPF da sessão (buscarFaturaDoCliente) — sem essa
      * checagem, um cliente logado poderia ver o PDF de outro cliente só
-     * trocando o id_fatura na URL; (2) confirma que a forma de cobrança NÃO
-     * é presencial — clientes com pagamento presencial (Banco Interno)
-     * nunca têm PDF de boleto/PIX real, mesmo que tentem acessar a rota
-     * direto por id.
+     * trocando o id_fatura na URL; (2) confirma que a fatura NÃO está paga
+     * — por ora o PDF só existe para fatura em aberto (nenhum link de
+     * comprovante de pagamento é exposto nesta fase); (3) confirma que a
+     * forma de cobrança NÃO é presencial — clientes com pagamento
+     * presencial (Banco Interno) nunca têm PDF de boleto/PIX real, mesmo
+     * que tentem acessar a rota direto por id.
      */
     public function pdfFatura(Request $request, int $idFatura): Response|JsonResponse
     {
@@ -185,6 +214,13 @@ class AreaClienteController extends Controller
                     'ok' => false,
                     'message' => 'Fatura não encontrada.',
                 ], 404);
+            }
+
+            if ((bool) ($fatura['quitado'] ?? false)) {
+                return response()->json([
+                    'ok' => false,
+                    'message' => 'Esta fatura já está paga — o PDF não está disponível nesta consulta.',
+                ], 403);
             }
 
             $inicio = Carbon::createFromDate($ano, 1, 1)->startOfDay();

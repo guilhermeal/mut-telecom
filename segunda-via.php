@@ -5,8 +5,6 @@ require_once __DIR__ . '/includes/data.php';
 $pageTitle = '2ª via de boleto — MUT Telecom';
 $pageDescription = 'Consulte e gere a 2ª via do seu boleto MUT Telecom pelo CPF ou CNPJ, sem precisar fazer login.';
 
-$boletos = mut_faturas_mock();
-
 require __DIR__ . '/includes/header.php';
 ?>
 <div>
@@ -26,25 +24,15 @@ require __DIR__ . '/includes/header.php';
               <button class="mut-btn-12" type="submit"><span id="mut-boleto-spinner" class="hidden mut-misc-24" aria-hidden="true"></span>Consultar boletos</button>
             </div>
             <div id="mut-boleto-error" class="hidden mut-misc-55" role="alert"></div>
-            <!-- dados mockados — ponto de integração futura com a API de boletos -->
           </form>
+
+          <div id="mut-boleto-empty" class="hidden mut-card-20 mut-misc-55" style="padding:22px; text-align:center;" role="status" aria-live="polite"></div>
 
           <div id="mut-boleto-result" class="hidden mut-card-20" role="table" aria-label="Resultado da consulta de boletos" aria-live="polite">
             <div class="mut-grid-13" role="row">
-              <div role="columnheader">Vencimento</div><div role="columnheader">Valor</div><div role="columnheader">Status</div><div class="mut-misc-13" role="columnheader">Ações</div>
+              <div role="columnheader">Vencimento</div><div role="columnheader">Valor</div><div role="columnheader">Situação</div><div class="mut-misc-13" role="columnheader">Ações</div>
             </div>
-<?php foreach ($boletos as $b): ?>
-            <div class="mut-grid-14" role="row">
-              <div class="mut-misc-16" role="cell"><?= e($b['venc']) ?></div>
-              <div class="mut-heading-x" role="cell"><?= e($b['valor']) ?></div>
-              <div role="cell"><span class="mut-status mut-status--<?= e($b['statusClasse']) ?>"><?= e($b['status']) ?></span></div>
-              <div class="mut-row-26" role="cell">
-                <button type="button" class="mut-boleto-copy mut-card-9" aria-label="Copiar código de barras do boleto de <?= e($b['venc']) ?>" title="Copiar código de barras"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span class="mut-boleto-copy-label" aria-live="polite">Código</span></button>
-                <button type="button" class="mut-boleto-pix mut-card-9" aria-label="Copiar Pix copia e cola do boleto de <?= e($b['venc']) ?>" title="Pix copia e cola">Pix</button>
-                <a href="#" class="mut-noop-link mut-btn-2" aria-disabled="true" title="Indisponível na demonstração — em breve" aria-label="Baixar PDF do boleto de <?= e($b['venc']) ?> (indisponível na demonstração)"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>PDF</a>
-              </div>
-            </div>
-<?php endforeach; ?>
+            <div id="mut-boleto-rows"></div>
           </div>
         </div>
       </section>

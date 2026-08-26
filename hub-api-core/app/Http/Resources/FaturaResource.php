@@ -24,6 +24,10 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * status continuam visíveis: o cliente ainda precisa saber quanto e quando
  * pagar, só não pode fazer isso digitalmente.
  *
+ * Fatura já PAGA também não expõe boleto/PIX/id_fatura (não faz sentido
+ * pagar de novo nem baixar o PDF de uma fatura quitada) — nesse caso
+ * "data_pagamento" é o dado relevante para o cliente ver.
+ *
  * Para o fluxo SEM login (2ª via por CPF), use BoletoPublicoResource, que é
  * deliberadamente mais restrito — não expõe id de fatura nem PDF.
  */
@@ -35,17 +39,20 @@ class FaturaResource extends JsonResource
     public function toArray(Request $request): array
     {
         $presencial = (bool) ($this->resource['_pagamento_presencial'] ?? false);
+        $pago = (bool) ($this->resource['quitado'] ?? false);
+        $ocultarPagamento = $presencial || $pago;
 
         return [
-            'id_fatura' => $presencial ? null : ($this->resource['id_fatura'] ?? null),
+            'id_fatura' => $ocultarPagamento ? null : ($this->resource['id_fatura'] ?? null),
             'vencimento' => $this->resource['data_vencimento'] ?? null,
             'valor' => $this->resource['valor'] ?? null,
-            'pago' => (bool) ($this->resource['quitado'] ?? false),
+            'pago' => $pago,
+            'data_pagamento' => $pago ? ($this->resource['data_pagamento'] ?? null) : null,
             'status' => $this->resource['status'] ?? null,
             'pagamento_presencial' => $presencial,
-            'linha_digitavel' => $presencial ? null : ($this->resource['linha_digitavel'] ?? null),
-            'codigo_barras' => $presencial ? null : ($this->resource['codigo_barras'] ?? null),
-            'pix_copia_cola' => $presencial ? null : ($this->resource['pix_copia_cola'] ?? null),
+            'linha_digitavel' => $ocultarPagamento ? null : ($this->resource['linha_digitavel'] ?? null),
+            'codigo_barras' => $ocultarPagamento ? null : ($this->resource['codigo_barras'] ?? null),
+            'pix_copia_cola' => $ocultarPagamento ? null : ($this->resource['pix_copia_cola'] ?? null),
         ];
     }
 }

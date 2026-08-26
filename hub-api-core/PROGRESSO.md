@@ -25,8 +25,9 @@ plano.
 - [x] **Fase 2** — Service layer (`HubSoftClient`): oAuth de aplicação, cache de token, consulta de faturas
 - [x] **Fase 3** — Endpoint público "2ª via de boleto" (sem login), com anti-enumeração e proteção de Origin
 - [x] **Fase 4** — Área do Cliente (login + sessão + faturas + plano + proxy de PDF) — concluída e validada por completo
-- [ ] **Fase 5** — Integração com o frontend PHP puro (trocar mocks em `assets/js/main.js`)
+- [~] **Fase 5** — Integração com o frontend PHP puro — código feito, falta validar no navegador (ver "Próximo passo")
 - [ ] **Fase 6** — Hardening final (checklist de produção)
+- [ ] **Deploy real** — nada disso está publicado na hospedagem ainda (só testado local/`mut.local`)
 
 ## Como rodar localmente
 
@@ -196,10 +197,65 @@ Login com credencial real testado ponta a ponta em 25/08/2026:
   `404` genérico.
 - `GET /cliente/faturas/{id}/pdf` sem sessão → `401`.
 
+## Fase 5 — Integração com o frontend PHP puro (em andamento, 26/08/2026)
+
+Mocks trocados por `fetch` real em `assets/js/main.js` (`initBoletoForm`,
+`initLoginForm`), preservando IDs/estrutura HTML. Também implementado nesta
+fase:
+
+- Botões "Código"/"Pix" com cópia real (com fallback para
+  `document.execCommand('copy')` quando `navigator.clipboard` não está
+  disponível — só funciona em contexto seguro/HTTPS ou `localhost`).
+- Botão de PDF removido da 2ª via pública (nunca deveria aparecer lá).
+- Fatura paga: esconde código/PIX/PDF, mostra só "Pago em {data}" — novo
+  campo `data_pagamento` em `FaturaResource`; `pdfFatura()` também recusa
+  (`403`) servir PDF de fatura já quitada, mesmo por acesso direto à URL.
+- Máscara de CPF/CNPJ com suporte a CNPJ alfanumérico (novo formato da
+  Receita, 12 posições alfanuméricas + 2 dígitos verificadores) nos campos
+  de 2ª via e login — mas o **envio continua restrito a CPF/CNPJ numérico
+  puro** por decisão do usuário (backend não foi atualizado ainda para
+  aceitar CNPJ alfanumérico; se digitado, o formulário barra o envio com
+  mensagem explicando).
+- Saudação com o primeiro nome do cliente ("Olá, Elione 👋") — novo campo
+  `primeiro_nome` retornado por `POST /cliente/login` (extraído de
+  `nome_razaosocial`, nunca o array `cliente` inteiro, que tem data de
+  nascimento e telefones).
+- Card "Suporte" trocado por "Próximo vencimento" no dashboard (calculado
+  no frontend a partir da fatura em aberto mais próxima do ano atual).
+
+**Ambiente de teste criado**: vhost dedicado `mut.local` (Apache,
+`/etc/apache2/sites-available/mut-local.conf`) servindo
+`/var/www/html/mut` na RAIZ do host — necessário porque as URLs usadas no
+JS (`/hub-api/...`, mesmo padrão de `/api/contato.php` já existente) são
+absolutas a partir da raiz do domínio, e produção roda na raiz (confirmado
+com o usuário), mas o ambiente de dev local antigo usava `/mut/` como
+subpasta. Exceção de HTTPS forçado no `.htaccess` raiz do site também
+ganhou `mut.local` na lista. `hub-api-core/.env`: `ORIGENS_PERMITIDAS`
+ganhou `http://mut.local`.
+
+**Pendente antes de fechar a Fase 5**: usuário ainda não validou no
+navegador a saudação com nome real nem o card de próximo vencimento (parou
+a sessão antes de testar). Retomar com `http://mut.local/area-do-cliente`,
+login real, e conferir os dois.
+
 ## Próximo passo
 
-**Fase 5**: trocar os mocks em `assets/js/main.js` (`initBoletoForm`,
-`initLoginForm`) do site PHP puro por chamadas `fetch` reais a estas rotas,
-preservando os IDs/estrutura HTML existentes (`#mut-boleto-form`,
-`#mut-boleto-result`, `#mut-login-form`, `#mut-logged-in`, etc.), com
-`credentials: 'include'` para os cookies de sessão funcionarem.
+1. **Fechar a Fase 5**: validar no navegador a saudação/próximo vencimento
+   pendentes acima, e o fluxo completo (2ª via + Área do Cliente) uma vez
+   mais de ponta a ponta.
+2. **Fase 6 (hardening)** — nenhum item feito ainda. Lista mínima:
+   - `APP_DEBUG=false` no `.env` de produção (hoje erros vazam stack trace
+     completo — visto de verdade no teste de rate limit da Fase 3).
+   - Exception handler central que nunca expõe detalhe técnico ao cliente.
+   - `SESSION_SECURE_COOKIE=true` no `.env` de produção (hoje é `false`,
+     correto só porque o teste local é HTTP sem certificado).
+   - `ORIGENS_PERMITIDAS` de produção sem `mut.local`/`localhost`.
+   - Permissões de arquivo: trocar o `chmod 777` usado localmente por algo
+     como `775` + grupo correto do usuário do PHP na hospedagem.
+   - Auditoria de `storage/logs/laravel.log` (garantir que nada sensível
+     foi logado).
+3. **Deploy real na hospedagem** (`/home/dh_sqk6rs/muttelecom.com.br/`) —
+   nada disso foi publicado ainda, só testado localmente/`mut.local`.
+   Comitar o código não é suficiente: `.env` de produção, a estrutura de
+   "ponte" (`hub-api/index.php` + `.htaccess`) e as permissões de arquivo
+   precisam ser recriados manualmente na hospedagem (não vêm do git).
